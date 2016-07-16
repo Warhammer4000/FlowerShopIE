@@ -5,45 +5,32 @@ package root.DataClass;
  */
 public class Inventory
 {
-    private int invenId;
-    private String invenName;
+    private int Id;
+    private String  name ;
 
-    public Inventory ()
-    {
-        this.invenId = 0;
-        this.invenName = "no name";
-
+    public Inventory(int id, String name) {
+        Id = id;
+        this.name = name;
     }
 
-    public Inventory(int iId, String iName)
-    {
-        this.invenId = iId;
-        this.invenName = iName;
+    public Inventory() {
+        Id=0;
+        this.name="";
     }
 
-    public void showinfo()
-    {
-        System.out.println("Inventory Id: " +invenId);
-        System.out.println("inventory Name:" +invenName);
+    public int getId() {
+        return Id;
     }
 
-    public void setinvenId(int iId)
-    {
-        this.invenId=iId;
+    public void setId(int id) {
+        Id = id;
     }
 
-    public int getinvenId()
-    {
-        return invenId;
+    public String getName() {
+        return name;
     }
 
-    public void setinvenName(String iName)
-    {
-        invenName=iName;
-    }
-
-    public String getinvenName()
-    {
-        return invenName;
+    public void setName(String name) {
+        this.name = name;
     }
 }

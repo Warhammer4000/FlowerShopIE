@@ -13,8 +13,8 @@ public class User
     public User ()
     {
         this.userId = 0;
-        this.userName = "no name";
-        this.userPassword = "no password";
+        this.userName = "";
+        this.userPassword = "";
     }
 
     public User(int uId, String uName, String uPass)
@@ -24,39 +24,27 @@ public class User
         this.userPassword = uPass;
     }
 
-    public void showinfo()
-    {
-        System.out.println("User Id: " +userId);
-        System.out.println("User Name:" +userName);
-    }
-
-    public void setuserId(int uId)
-    {
-        this.userId=uId;
-    }
-
-    public int getuserId()
-    {
+    public int getUserId() {
         return userId;
     }
 
-    public void setuserName(String uName)
-    {
-        userName=uName;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getuserName()
-    {
+    public String getUserName() {
         return userName;
     }
 
-    public void setuserPassword(String uPass)
-    {
-        userPassword=uPass;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getuName()
-    {
+    public String getUserPassword() {
         return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 }

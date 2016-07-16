@@ -1,105 +1,78 @@
 package root.DataClass;
 
+import java.util.Date;
+
 /**
  * Created by Fahmida Milee on 15/07/2016.
  */
 
 public class Product
 {
-    private int productId;
-    private String productName;
-    private int productQuantity;
-    private String pPurchaseDate;
-    private double productPrice;
-    private String productVendor;
+    private int Id;
+    private String Name;
+    private int Quantity;
+    private Date PurchaseDate;
+    private double Price;
+    private String Vendor;
 
-    public Product ()
-    {
-        this.productId = 0;
-        this.productName = "no name";
-        this.productQuantity = 0;
-        this.pPurchaseDate = "no date";
-        this.productPrice = 0;
-        this.productVendor = "no vendor";
+    public Product() {
+
     }
 
-    public Product (int pid, String pname, int pquantity, String ppdate, double pprice, String pvendor)
-    {
-        this.productId = pid;
-        this.productName = pname;
-        this.productQuantity = pquantity;
-        this.pPurchaseDate = ppdate;
-        this.productPrice = pprice;
-        this.productVendor = pvendor;
+    public Product(int id, String name, int quantity, Date purchaseDate, double price, String vendor) {
+        Id = id;
+        Name = name;
+        Quantity = quantity;
+        PurchaseDate = purchaseDate;
+        Price = price;
+        Vendor = vendor;
     }
 
-    public void showinfo()
-    {
-        System.out.println("Product ID: " +productId);
-        System.out.println("Product Name: " +productName);
-        System.out.println("Product Quantity: " +productQuantity);
-        System.out.println("Purchase Date: " +pPurchaseDate);
-        System.out.println("Product Price: " +productPrice);
-        System.out.println("product Ventor: " +productVendor);
+    public int getId() {
+        return Id;
     }
 
-    public void setproductId(int pid)
-    {
-        this.productId = pid;
+    public void setId(int id) {
+        Id = id;
     }
 
-    public int getproductId()
-    {
-        return productId;
+    public String getName() {
+        return Name;
     }
 
-    public void setproductName(String pname)
-    {
-        productName = pname;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public String getproductName()
-    {
-        return productName;
+    public int getQuantity() {
+        return Quantity;
     }
 
-    public void setproductQuantity(int pquantity)
-    {
-        this.productQuantity = pquantity;
+    public void setQuantity(int quantity) {
+        Quantity = quantity;
     }
 
-    public int getproductQuantity()
-    {
-        return productQuantity;
+    public Date getPurchaseDate() {
+        return PurchaseDate;
     }
 
-    public void setpPurchaseDate(String ppdate)
-    {
-        this.pPurchaseDate=ppdate;
+    public void setPurchaseDate(Date purchaseDate) {
+        PurchaseDate = purchaseDate;
     }
 
-    public String getpPurchaseDate()
-    {
-        return pPurchaseDate;
+    public double getPrice() {
+        return Price;
     }
 
-    public void setproductPrice()
-    {
-        productPrice = pprice;
+    public void setPrice(double price) {
+        Price = price;
     }
 
-    public double getproductPrice()
-    {
-        return productPrice;
+    public String getVendor() {
+        return Vendor;
     }
 
-    public void setproductVentor(String pvendor)
-    {
-        productVendor=pvendor;
-    }
-
-    public String getproductVendor()
-    {
-        return productVendor;
+    public void setVendor(String vendor) {
+        Vendor = vendor;
     }
 }
