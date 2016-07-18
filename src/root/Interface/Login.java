@@ -47,7 +47,7 @@ public class Login {
         passwordField.setText("admin");
         nameLable=new Label("User Name");
         passwordLable=new Label("Password");
-        status=new Label("User Name/Password Mismatch");
+        status=new Label();
         status.setTextFill(Paint.valueOf("Red"));
         status.setVisible(false);
 
@@ -81,6 +81,7 @@ public class Login {
 
         else{
             System.out.print("Null");
+            statusUpdate("User Name/Password Mismatch");
             return false;
         }
 

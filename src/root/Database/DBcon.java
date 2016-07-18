@@ -46,7 +46,6 @@ public class DBcon {
     ResultSet selectQuery(String sql){
         try{
             result = stmt.executeQuery(sql);
-            System.out.print(sql);
         }catch (Exception e){
             System.out.print("Error");
             e.printStackTrace();
