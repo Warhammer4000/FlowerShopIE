@@ -17,11 +17,10 @@ public class User
         this.userPassword = "";
     }
 
-    public User(int uId, String uName, String uPass)
-    {
-        this.userId = uId;
-        this.userName = uName;
-        this.userPassword = uPass;
+    public User(int userId, String userName, String userPassword) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userPassword = userPassword;
     }
 
     public int getUserId() {

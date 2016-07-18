@@ -6,16 +6,16 @@ package root.DataClass;
 public class Inventory
 {
     private int Id;
-    private String  name ;
+    private String  Name ;
 
     public Inventory(int id, String name) {
         Id = id;
-        this.name = name;
+        this.Name = name;
     }
 
     public Inventory() {
         Id=0;
-        this.name="";
+        this.Name="";
     }
 
     public int getId() {
@@ -27,10 +27,10 @@ public class Inventory
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
 }
