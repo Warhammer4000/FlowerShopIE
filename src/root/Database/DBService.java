@@ -30,13 +30,16 @@ public class DBService {
     }*/
 
     public User getUser(String username, String password) {
-        String query="SELECT ID,Name,Password FROM User WHERE Username="+username+" and Password="+password+"";
-
+        String query="SELECT ID,Name,Password FROM \"User\" WHERE name='"+username+"' and Password='"+password+"'";
+        System.out.println(query);
         User user = null;
         try {
             ResultSet rs = dbCon.selectQuery(query);
+
+
             while (rs.next()) {
-                user=new User(Integer.parseInt(rs.getString("ID")), rs.getString("NAME"), rs.getString("Password"));
+                System.out.print(rs.getInt("ID")+rs.getString("Name")+rs.getString("Password"));
+                user=new User(rs.getInt("ID"), rs.getString("NAME"), rs.getString("Password"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

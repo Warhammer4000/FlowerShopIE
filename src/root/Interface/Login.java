@@ -9,12 +9,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import root.DataClass.User;
+import root.Database.DBService;
 
 
 /**
  * Created by tazim on 7/17/2016.
  */
 public class Login {
+    private User user;
     //Building block
     private Stage window;
     private Scene scene;
@@ -35,10 +38,13 @@ public class Login {
     public Login(){
         loginButton=new Button("Login");
         loginButton.setOnAction(event -> {
-            LoginRequest(nameField.getText(),passwordField.getText());
+            if(LoginRequest(nameField.getText(),passwordField.getText())){
+                System.out.println("User Found");
+            }
         });
-        nameField=new TextField();
+        nameField=new TextField("Admin");
         passwordField=new PasswordField();
+        passwordField.setText("admin");
         nameLable=new Label("User Name");
         passwordLable=new Label("Password");
         status=new Label("User Name/Password Mismatch");
@@ -67,9 +73,17 @@ public class Login {
     }
 
     public boolean LoginRequest(String name,String password){
-
+        user= new DBService().getUser(name,password);
         //check database if found return true
-        return  true;
+        if(user!=null){
+            return  true;
+        }
+
+        else{
+            System.out.print("Null");
+            return false;
+        }
+
     }
 
     public void statusUpdate(String status){

@@ -16,6 +16,7 @@ public class DBcon {
             //step1 load the driver class
             Class.forName("oracle.jdbc.driver.OracleDriver");
         }catch(ClassNotFoundException ignored) {
+            System.out.println("Connector not found");
         }
         try{
 
@@ -27,6 +28,7 @@ public class DBcon {
 
         } catch (Exception ex) {
             connectionCheck = false;
+            System.out.println("Connection Failed");
         }
 
     }
@@ -41,7 +43,14 @@ public class DBcon {
         return stmt.executeUpdate(sql);
     }
 
-    ResultSet selectQuery(String sql) throws SQLException {
-        return   result = stmt.executeQuery(sql);
+    ResultSet selectQuery(String sql){
+        try{
+            result = stmt.executeQuery(sql);
+            System.out.print(sql);
+        }catch (Exception e){
+            System.out.print("Error");
+            e.printStackTrace();
+        }
+        return   result;
     }
 }
