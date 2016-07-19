@@ -6,14 +6,19 @@ import root.Interface.Login;
 
 public class Main extends Application {
 
-    @Override
+    private Stage window;
     public void start(Stage primaryStage) throws Exception{
-        Login loginWindow=new Login();
-        loginWindow.show();
+        window =primaryStage;
+        window.setScene(new Login(this).GetScene());
+
+        window.show();
 
 
     }
 
+    public Stage getWindow(){
+        return this.window;
+    }
 
     public static void main(String[] args) {
         launch(args);

@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import root.App.Main;
 import root.DataClass.User;
 import root.Database.DBService;
 
@@ -19,7 +20,6 @@ import root.Database.DBService;
 public class Login {
     private User user;
     //Building block
-    private Stage window;
     private Scene scene;
     private VBox layout;
     //buttons
@@ -35,11 +35,13 @@ public class Login {
     private Label status;
 
     //constructor
-    public Login(){
+    public Login(Main main){
         loginButton=new Button("Login");
         loginButton.setOnAction(event -> {
             if(LoginRequest(nameField.getText(),passwordField.getText())){
-                System.out.println("User Found");
+                //set platformScene
+                main.getWindow().setScene(new Platform(main).GetScene());
+
             }
         });
         nameField=new TextField("Admin");
@@ -61,15 +63,9 @@ public class Login {
         scene=new Scene(layout,300,400);
 
 
-        //setup Window
-        window=new Stage();
-        window.setScene(scene);
-        window.setResizable(false);
-        window.setTitle("Login");
-
     }
-    public  void show(){
-        window.show();
+    public  Scene GetScene(){
+        return this.scene;
     }
 
     public boolean LoginRequest(String name,String password){
