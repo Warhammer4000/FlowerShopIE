@@ -89,6 +89,7 @@ public class UserMenu {
         layout.setBottom(status);
 
         scene=new Scene(layout,800,600);
+
     }
 
     public Scene GetScene(){
