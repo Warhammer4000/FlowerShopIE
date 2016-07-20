@@ -7,17 +7,21 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import root.App.Main;
 import root.DataClass.Product;
+import root.DataClass.User;
 
 import java.util.Date;
 
 /**
  * Created by Ehtesham on 7/19/2016.
  */
-public class Platform {
+public class UserMenu {
     private Main main;
+    private User user;
 
     private Scene scene;
     private BorderPane layout;
@@ -36,8 +40,9 @@ public class Platform {
 
     private Label status;
 
-    public Platform(Main main){
+    public UserMenu(Main main, User user){
         this.main=main;
+        this.user=user;
         layout=new BorderPane();
         //top
         VBox topContainer=new VBox();//this will hold top stuffs
@@ -148,6 +153,7 @@ public class Platform {
         MenuItem changePassword= new MenuItem("Change Password");
         changePassword.setOnAction(event ->{
             //new window with passChange option
+            passwordChange(user);
         });
         accountMenu.getItems().add(changePassword);
 
@@ -159,5 +165,62 @@ public class Platform {
 
         menuBar.getMenus().addAll(accountMenu);
     }
+
+    public void passwordChange(User user){
+        Stage passowordChangeWindow= new Stage();
+        passowordChangeWindow.setTitle("Change Password");
+        Label status=new Label("");
+
+
+        VBox vBox=new VBox(20);
+        vBox.setAlignment(Pos.CENTER);
+
+        PasswordField oldPass= new PasswordField();
+        oldPass.setMaxSize(200,20);
+
+        PasswordField newPass= new PasswordField();
+        newPass.setMaxSize(200,20);
+
+        PasswordField newPass2= new PasswordField();
+        newPass2.setMaxSize(200,20);
+
+        Label label1= new Label("Old Password");
+        Label label2=new Label("New Password");
+        Label label3=new Label("Confirm password");
+
+        Button submitButton= new Button("Submit");
+        submitButton.setOnAction(event -> {
+            if(user.getUserPassword().equals(oldPass.getText()) &&!newPass.getText().isEmpty()){
+                if( newPass.getText().equals(newPass2.getText())){
+                    user.setUserPassword(newPass.getText());
+                    status.setTextFill(Color.web("Green"));
+                    status.setText("Password Change Successful");
+                    //todo update database
+                }
+                else{
+                    newPass.setText("");
+                    newPass2.setText("");
+                    status.setTextFill(Color.web("Red"));
+                    status.setText("Retype Password");
+                }
+
+
+            }
+            else{
+                status.setTextFill(Color.web("Red"));
+                status.setText("Old Password Doesn't Match");
+            }
+
+
+        });
+        vBox.getChildren().addAll(label1,oldPass,label2,newPass,label3,newPass2,submitButton,status);
+
+        Scene scene= new Scene(vBox,300,400);
+        passowordChangeWindow.setScene(scene);
+        passowordChangeWindow.initModality(Modality.APPLICATION_MODAL);
+        passowordChangeWindow.show();
+
+    }
+
 
 }

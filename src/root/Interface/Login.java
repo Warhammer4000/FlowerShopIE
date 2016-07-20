@@ -8,7 +8,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
-import javafx.stage.Stage;
 import root.App.Main;
 import root.DataClass.User;
 import root.Database.DBService;
@@ -40,7 +39,7 @@ public class Login {
         loginButton.setOnAction(event -> {
             if(LoginRequest(nameField.getText(),passwordField.getText())){
                 //set platformScene
-                main.getWindow().setScene(new Platform(main).GetScene());
+                main.getWindow().setScene(new UserMenu(main,user).GetScene());
 
             }
         });
