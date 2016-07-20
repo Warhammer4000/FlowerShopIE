@@ -13,8 +13,11 @@ import javafx.stage.Stage;
 import root.App.Main;
 import root.DataClass.Product;
 import root.DataClass.User;
+import root.Database.DBService;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Ehtesham on 7/19/2016.
@@ -49,8 +52,20 @@ public class UserMenu {
         HBox Tabs=new HBox(5);
         Tabs.setAlignment(Pos.CENTER);
         Inventory1=new Button("Show Room");
+        Inventory1.setOnAction(event -> {
+            List<Product> data=new DBService().getTableData("Inventory1");
+            updateTableData(data);
+        });
         Inventory2=new Button("Godown 1");
+        Inventory2.setOnAction(event -> {
+            List<Product> data=new DBService().getTableData("Inventory2");
+            updateTableData(data);
+        });
         Inventory3=new Button("Godown 2");
+        Inventory3.setOnAction(event -> {
+            List<Product> data=new DBService().getTableData("Inventory3");
+            updateTableData(data);
+        });
 
         layout.setTop(topContainer);
         menuBar=new MenuBar();
@@ -71,6 +86,9 @@ public class UserMenu {
         rightContainer.setAlignment(Pos.CENTER);
         layout.setRight(rightContainer);
         addButton=new Button("+ADD");
+        addButton.setOnAction(event -> {
+            new AddProduct();
+        });
         editButton=new Button("Edit");
         removeButton=new Button("Remove");
         rightContainer.getChildren().addAll(addButton,editButton,removeButton);
@@ -194,9 +212,14 @@ public class UserMenu {
             if(user.getUserPassword().equals(oldPass.getText()) &&!newPass.getText().isEmpty()){
                 if( newPass.getText().equals(newPass2.getText())){
                     user.setUserPassword(newPass.getText());
-                    status.setTextFill(Color.web("Green"));
-                    status.setText("Password Change Successful");
-                    //todo update database
+                    DBService Ds=new DBService();
+                    if(Ds.updatePassword(user.getUserName(),user.getUserPassword())){
+                        status.setTextFill(Color.web("Green"));
+                        status.setText("Password Change Successful");
+                    }else {
+                        status.setTextFill(Color.web("RED"));
+                        status.setText("Could Not Update Database");
+                    }
                 }
                 else{
                     newPass.setText("");
@@ -221,6 +244,19 @@ public class UserMenu {
         passowordChangeWindow.initModality(Modality.APPLICATION_MODAL);
         passowordChangeWindow.show();
 
+    }
+
+    public void updateTableData(List<Product> data){
+        try {
+
+            for (Product p : data) {
+                table.getItems().addAll(p);
+            }
+
+            table.refresh();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

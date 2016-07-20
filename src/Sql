@@ -1,0 +1,44 @@
+//Table
+
+CREATE TABLE SCOTT."User"
+(
+    ID INT,
+    Name VARCHAR(20),
+    Password VARCHAR(20)
+);
+
+CREATE TABLE SCOTT.Inventory1
+(
+    ID NUMBER PRIMARY KEY NOT NULL,
+    Name VARCHAR(40),
+    Quantity NUMBER,
+    PurchaseDate DATE,
+    Price NUMBER,
+    Vendor VARCHAR(20)
+)
+
+CREATE TABLE SCOTT.Inventory2
+(
+    ID NUMBER PRIMARY KEY NOT NULL,
+    Name VARCHAR(40),
+    Quantity NUMBER,
+    PurchaseDate DATE,
+    Price NUMBER,
+    Vendor VARCHAR(20)
+)
+
+CREATE TABLE SCOTT.Inventory3
+(
+    ID NUMBER PRIMARY KEY NOT NULL,
+    Name VARCHAR(40),
+    Quantity NUMBER,
+    PurchaseDate DATE,
+    Price NUMBER,
+    Vendor VARCHAR(20)
+)
+
+
+//Update
+UPDATE SCOTT."User"
+SET Password='asbdhb'
+WHERE name='xyz';
