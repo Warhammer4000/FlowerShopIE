@@ -15,7 +15,6 @@ import root.DataClass.Product;
 import root.DataClass.User;
 import root.Database.DBService;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,9 +30,9 @@ public class UserMenu {
     private MenuBar menuBar;
     private TableView table;
 
-    private Button Inventory1;
-    private Button Inventory2;
-    private Button Inventory3;
+    private Button Inventory1Button;
+    private Button Inventory2Buton;
+    private Button Inventory3Button;
 
     private Button addButton;
     private Button removeButton;
@@ -51,18 +50,18 @@ public class UserMenu {
         VBox topContainer=new VBox();//this will hold top stuffs
         HBox Tabs=new HBox(5);
         Tabs.setAlignment(Pos.CENTER);
-        Inventory1=new Button("Show Room");
-        Inventory1.setOnAction(event -> {
+        Inventory1Button =new Button("Inventory1");
+        Inventory1Button.setOnAction(event -> {
             List<Product> data=new DBService().getTableData("Inventory1");
             updateTableData(data);
         });
-        Inventory2=new Button("Godown 1");
-        Inventory2.setOnAction(event -> {
+        Inventory2Buton =new Button("Inventory2");
+        Inventory2Buton.setOnAction(event -> {
             List<Product> data=new DBService().getTableData("Inventory2");
             updateTableData(data);
         });
-        Inventory3=new Button("Godown 2");
-        Inventory3.setOnAction(event -> {
+        Inventory3Button =new Button("Inventory3");
+        Inventory3Button.setOnAction(event -> {
             List<Product> data=new DBService().getTableData("Inventory3");
             updateTableData(data);
         });
@@ -71,7 +70,7 @@ public class UserMenu {
         menuBar=new MenuBar();
         setupMenuBar();
         topContainer.getChildren().addAll(menuBar);
-        Tabs.getChildren().addAll(Inventory1,Inventory2,Inventory3);
+        Tabs.getChildren().addAll(Inventory1Button, Inventory2Buton, Inventory3Button);
         topContainer.getChildren().addAll(Tabs);
 
 

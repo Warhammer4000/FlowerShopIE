@@ -71,4 +71,20 @@ public class DBService {
         }
         return user;
     }
+
+    public boolean insertNewProduct(String tableName, Product p){
+        String query="INSERT  INTO "+tableName+" VALUES ("+p.getId()+",'"+p.getName()+"',"+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+",'"+p.getVendor()+"');";
+        try{
+            System.out.print(query);
+            dbCon.selectQuery(query);
+
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Couldn't update Table");
+            return false;
+        }
+        return true;
+    }
 }

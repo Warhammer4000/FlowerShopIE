@@ -5,40 +5,52 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-import javafx.scene.control.*;
+import root.CustomControl.NumericTextField;
+import root.DataClass.Product;
+import root.Database.DBService;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 /**
  * Created by Ehtesham on 7/20/2016.
  */
 public class AddProduct {
     private Label idLable;
-    private TextField id;
+    private NumericTextField id;
+
     private Label nameLable;
     private TextField name;
+
     private Label quantityLable;
-    private TextField quantity;
+    private NumericTextField quantity;
+
     private Label purchaseDateLable;
     private DatePicker purchaseDate;
+
     private Label priceLable;
     private TextField price;
+
     private  Label vendorLable;
     private TextField vendor;
 
     private  Button submitButton;
+    private  Label status;
 
     private VBox layout;
     private Stage window;
     private Scene scene;
     public AddProduct(){
         idLable=new Label("ID");
-        id=new TextField();
-        id.setPromptText("Ex.1");
+        id=new NumericTextField();
+        id.setPromptText("Ex.1(number)");
         id.setMaxSize(200, 20);
 
         nameLable=new Label("Name");
@@ -48,7 +60,7 @@ public class AddProduct {
 
 
         quantityLable=new Label("Quantity");
-        quantity=new TextField();
+        quantity=new NumericTextField();
         quantity.setPromptText("Ex.500");
         quantity.setMaxSize(200, 20);
 
@@ -70,6 +82,10 @@ public class AddProduct {
         vendor.setMaxSize(200, 20);
 
         submitButton=new Button("Submit");
+        submitButton.setOnAction(event -> {
+            addProduct();
+        });
+        status = new Label("");
 
         layout=new VBox(2);
         layout.setAlignment(Pos.CENTER);
@@ -80,6 +96,7 @@ public class AddProduct {
         layout.getChildren().addAll(priceLable,price);
         layout.getChildren().addAll(vendorLable,vendor);
         layout.getChildren().addAll(submitButton);
+        layout.getChildren().addAll(status);
 
         scene=new Scene(layout,300,400);
         window=new Stage();
@@ -92,6 +109,34 @@ public class AddProduct {
 
     public void addProduct(){
         //todo add product on current table
+
+        //validate Values
+        try {
+            Product p;
+            int ID=Integer.parseInt(id.getText());
+            String Name=this.name.getText();
+            int Quantity=Integer.parseInt(quantity.getText());
+            //date
+            LocalDate localDate = purchaseDate.getValue();
+            Date Date = java.sql.Date.valueOf(localDate);
+
+            double Price=Double.parseDouble(this.price.getText());
+            String Vendor=vendor.getText();
+
+            //create a product object
+            p=new Product(ID,Name,Quantity,Date,Price,Vendor);
+            DBService dbService=new DBService();
+            dbService.insertNewProduct("Inventory1",p);
+
+
+
+        }catch (Exception e){
+            status.setText("Invalid Price input");
+            status.setTextFill(Color.valueOf("Red"));
+        }
+
+
+
     }
 
 }
