@@ -3,7 +3,6 @@ package root.Interface;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -15,34 +14,30 @@ import root.DataClass.Product;
 import root.DataClass.User;
 import root.Database.DBService;
 
-import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Ehtesham on 7/19/2016.
+ * Created by Ehtesham on 7/21/2016.
  */
-public class UserMenu {
+public class DashBoard {
     private Main main;
     private User user;
 
     private Scene scene;
     private BorderPane layout;
     private MenuBar menuBar;
-    private TableView table;
 
     private Button Inventory1Button;
     private Button Inventory2Buton;
     private Button Inventory3Button;
 
-    private Button addButton;
-    private Button removeButton;
-    private Button editButton;
+
 
     private Button searchButton;
 
     private Label status;
 
-    public UserMenu(Main main, User user){
+    public DashBoard(Main main, User user){
         this.main=main;
         this.user=user;
         layout=new BorderPane();
@@ -53,18 +48,21 @@ public class UserMenu {
         Inventory1Button =new Button("Inventory1");
         Inventory1Button.setOnAction(event -> {
             List<Product> data=new DBService().getTableData("Inventory1");
+            new InventoryView("Inventory1",data);
 
-            updateTableData(data);
         });
         Inventory2Buton =new Button("Inventory2");
         Inventory2Buton.setOnAction(event -> {
             List<Product> data=new DBService().getTableData("Inventory2");
-            updateTableData(data);
+            new InventoryView("Inventory2",data);
+
+
         });
         Inventory3Button =new Button("Inventory3");
         Inventory3Button.setOnAction(event -> {
             List<Product> data=new DBService().getTableData("Inventory3");
-            updateTableData(data);
+            new InventoryView("Inventory3",data);
+
         });
 
         layout.setTop(topContainer);
@@ -76,22 +74,14 @@ public class UserMenu {
 
 
         //center
-        table=new TableView();
-        setTable();
-        layout.setCenter(table);
+        //Show Log msg and bla blas
 
 
         //Right
         VBox rightContainer=new VBox(10);
         rightContainer.setAlignment(Pos.CENTER);
         layout.setRight(rightContainer);
-        addButton=new Button("+ADD");
-        addButton.setOnAction(event -> {
-            new AddProduct();
-        });
-        editButton=new Button("Edit");
-        removeButton=new Button("Remove");
-        rightContainer.getChildren().addAll(addButton,editButton,removeButton);
+
 
 
         //Left
@@ -109,60 +99,6 @@ public class UserMenu {
         scene=new Scene(layout,800,600);
 
     }
-
-    public Scene GetScene(){
-        return this.scene;
-    }
-
-    private void setTable() {
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
-
-        //id
-        TableColumn<Product, Integer> idColumn = new TableColumn<>("ID");
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        idColumn.setStyle("-fx-alignment:CENTER;");
-
-
-        //name
-        TableColumn<Product, String> nameColumn = new TableColumn<>("Name");
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        nameColumn.setStyle("-fx-alignment:CENTER;");
-
-        //Price
-        TableColumn<Product, Double> priceColumn = new TableColumn<>("Price");
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
-        priceColumn.setStyle("-fx-alignment:CENTER;");
-
-
-        //Quantity
-        TableColumn<Product, Integer> quantityColumn = new TableColumn<>("Quantity");
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
-        quantityColumn.setStyle("-fx-alignment:CENTER;");
-
-
-        //Date
-        TableColumn<Product, Date> dateColumn = new TableColumn<>("Purchase Date");
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseDate"));
-        dateColumn.setStyle("-fx-alignment:CENTER;");
-
-        //Vendor
-        TableColumn<Product, String> vendorColumn = new TableColumn<>("Vendor");
-        vendorColumn.setCellValueFactory(new PropertyValueFactory<>("vendor"));
-        vendorColumn.setStyle("-fx-alignment:CENTER;");
-
-
-        //addColumns on table
-        table.getColumns().add(idColumn);
-        table.getColumns().add(nameColumn);
-        table.getColumns().add(priceColumn);
-        table.getColumns().add(quantityColumn);
-        table.getColumns().add(dateColumn);
-        table.getColumns().add(vendorColumn);
-    }
-
-
-
     public void setupMenuBar(){
         Menu accountMenu= new Menu();
         accountMenu.setText("Account");
@@ -244,21 +180,8 @@ public class UserMenu {
 
     }
 
-    public void updateTableData(List<Product> data){
-        table.getColumns().removeAll();
-        table.refresh();
-        try {
-            for (Product p : data) {
 
-                table.getItems().addAll(p);
-                System.out.println(p.getId());
-            }
-
-            table.refresh();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public Scene GetScene(){
+        return this.scene;
     }
-
-
 }

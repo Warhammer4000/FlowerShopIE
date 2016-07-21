@@ -39,7 +39,7 @@ public class Login {
         loginButton.setOnAction(event -> {
             if(LoginRequest(nameField.getText(),passwordField.getText())){
                 //set platformScene
-                main.getWindow().setScene(new UserMenu(main,user).GetScene());
+                main.getWindow().setScene(new DashBoard(main,user).GetScene());
 
             }
         });

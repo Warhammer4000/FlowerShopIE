@@ -47,7 +47,11 @@ public class AddProduct {
     private VBox layout;
     private Stage window;
     private Scene scene;
-    public AddProduct(){
+
+    private String tableName;
+    public AddProduct(String tableName){
+        this.tableName=tableName;
+
         idLable=new Label("ID");
         id=new NumericTextField();
         id.setPromptText("Ex.1(number)");
@@ -126,7 +130,7 @@ public class AddProduct {
             //create a product object
             p=new Product(ID,Name,Quantity,Date,Price,Vendor);
             DBService dbService=new DBService();
-            dbService.insertNewProduct("Inventory1",p);
+            dbService.insertNewProduct(tableName,p);
 
 
 
