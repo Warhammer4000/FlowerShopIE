@@ -3,26 +3,22 @@ package root.Interface;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-
 import root.CustomControl.NumericTextField;
 import root.DataClass.Product;
 import root.Database.DBService;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
  * Created by Ehtesham on 7/20/2016.
  */
-public class AddProduct {
+public class EditProduct {
     private Label idLable;
     private NumericTextField id;
 
@@ -51,17 +47,19 @@ public class AddProduct {
     private  TableView table;
     private String tableName;
 
-    public AddProduct(String tableName,TableView table){
+    public EditProduct(String tableName, TableView table,Product p){
         this.tableName=tableName;
         this.table=table;
 
         idLable=new Label("ID");
         id=new NumericTextField();
+        id.setText(String.valueOf(p.getId()));
         id.setPromptText("Ex.1(number)");
         id.setMaxSize(200, 20);
 
         nameLable=new Label("Name");
         name=new TextField();
+        name.setText(p.getName());
         name.setPromptText("Rose");
         name.setMaxSize(200, 20);
 
@@ -70,23 +68,27 @@ public class AddProduct {
         quantity=new NumericTextField();
         quantity.setPromptText("Ex.500");
         quantity.setMaxSize(200, 20);
-
+        quantity.setText(String.valueOf(p.getQuantity()));
 
 
         purchaseDateLable=new Label("Purchase Date");
         purchaseDate=new DatePicker();
-        purchaseDate.setValue(LocalDate.now());
+        DateTimeFormatter dateFormatter =
+                DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        purchaseDate.setValue(LocalDate.parse(p.getPurchaseDate().toString(), dateFormatter));
 
 
         priceLable= new Label("Price");
         price=new TextField();
         price.setPromptText("Ex.500");
         price.setMaxSize(200, 20);
+        price.setText(String.valueOf(p.getPrice()));
 
         vendorLable=new Label("Vendor");
         vendor=new TextField();
         vendor.setPromptText("Ex.500");
         vendor.setMaxSize(200, 20);
+        vendor.setText(String.valueOf(p.getVendor()));
 
         submitButton=new Button("Submit");
         submitButton.setOnAction(event -> {

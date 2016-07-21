@@ -36,9 +36,9 @@ public class InventoryView {
 
 
     private Label status;
-
+    private String tableName;
     public InventoryView(String tableName,List<Product> data){
-
+        this.tableName=tableName;
         layout=new BorderPane();
         //top
         VBox topContainer=new VBox();//this will hold top stuffs
@@ -66,6 +66,10 @@ public class InventoryView {
             new AddProduct(tableName,table);
         });
         editButton=new Button("Edit");
+        editButton.setOnAction(event -> {
+            EditButtonPress();
+        });
+
         removeButton=new Button("Remove");
         removeButton.setOnAction(event -> {
             DeleteButtonPress();
@@ -176,6 +180,15 @@ public class InventoryView {
             status.setText("No Rows Selected");
             status.setTextFill(Color.web("Blue"));
         }
+
+
+    }
+
+    public void EditButtonPress(){
+        //todo Update Database
+        ObservableList<Product> productSelected;
+        productSelected = table.getSelectionModel().getSelectedItems();
+        new EditProduct(tableName,table,productSelected.get(0));
 
 
     }

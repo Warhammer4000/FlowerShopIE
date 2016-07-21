@@ -51,6 +51,9 @@ public class DashBoard {
         setupMenuBar();
         topContainer.getChildren().addAll(menuBar);
         topContainer.getChildren().addAll(Tabs);
+        searchButton=new Button("Search");
+        topContainer.setAlignment(Pos.BASELINE_RIGHT);
+        topContainer.getChildren().addAll(searchButton);
 
 
         //center
@@ -94,8 +97,8 @@ public class DashBoard {
         VBox leftContainer=new VBox(10);
         leftContainer.setAlignment(Pos.CENTER);
         layout.setLeft(leftContainer);
-        searchButton=new Button("Search");
-        leftContainer.getChildren().addAll(searchButton);
+
+
 
         //bottom
         //bot will show A status Update after each exection Performed
