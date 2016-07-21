@@ -1,5 +1,6 @@
 package root.Interface;
 
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -10,11 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import root.App.Main;
 import root.DataClass.Product;
-import root.DataClass.User;
-import root.Database.DBService;
 
 import java.util.Date;
 import java.util.List;
@@ -66,10 +63,13 @@ public class InventoryView {
         layout.setRight(rightContainer);
         addButton=new Button("+ADD");
         addButton.setOnAction(event -> {
-            new AddProduct(tableName);
+            new AddProduct(tableName,table);
         });
         editButton=new Button("Edit");
         removeButton=new Button("Remove");
+        removeButton.setOnAction(event -> {
+            DeleteButtonPress();
+        });
         rightContainer.getChildren().addAll(addButton,editButton,removeButton);
 
 
@@ -160,6 +160,26 @@ public class InventoryView {
             e.printStackTrace();
         }
     }
+    public  void DeleteButtonPress(){
+        //// TODO Delete item from DB 
+        ObservableList<Product> accountSelected , allAccounts;
+        accountSelected = table.getSelectionModel().getSelectedItems();
+        allAccounts = table.getItems();
+
+        if (!table.getSelectionModel().isEmpty()) {
+            accountSelected.forEach(allAccounts::remove);
+            status.setText("Row Deleted");
+            status.setTextFill(Color.web("Red"));
+            table.refresh();
+        }
+        else {
+            status.setText("No Rows Selected");
+            status.setTextFill(Color.web("Blue"));
+        }
+
+
+    }
+
 
 
 }

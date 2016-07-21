@@ -48,9 +48,12 @@ public class AddProduct {
     private Stage window;
     private Scene scene;
 
+    private  TableView table;
     private String tableName;
-    public AddProduct(String tableName){
+
+    public AddProduct(String tableName,TableView table){
         this.tableName=tableName;
+        this.table=table;
 
         idLable=new Label("ID");
         id=new NumericTextField();
@@ -112,8 +115,6 @@ public class AddProduct {
     }
 
     public void addProduct(){
-        //todo add product on current table
-
         //validate Values
         try {
             Product p;
@@ -131,7 +132,7 @@ public class AddProduct {
             p=new Product(ID,Name,Quantity,Date,Price,Vendor);
             DBService dbService=new DBService();
             dbService.insertNewProduct(tableName,p);
-
+            table.refresh();
 
 
         }catch (Exception e){

@@ -44,6 +44,26 @@ public class DashBoard {
         //top
         VBox topContainer=new VBox();//this will hold top stuffs
         HBox Tabs=new HBox(5);
+
+
+        layout.setTop(topContainer);
+        menuBar=new MenuBar();
+        setupMenuBar();
+        topContainer.getChildren().addAll(menuBar);
+        topContainer.getChildren().addAll(Tabs);
+
+
+        //center
+        //Show Log msg and bla blas
+        TabPane Tabpane=new TabPane();
+        Tab log = new Tab();
+        log.setText("Log");
+        Tabpane.getTabs().add(log);
+
+        layout.setCenter(Tabpane);
+
+        //Right
+        VBox rightContainer=new VBox(10);
         Tabs.setAlignment(Pos.CENTER);
         Inventory1Button =new Button("Inventory1");
         Inventory1Button.setOnAction(event -> {
@@ -64,23 +84,9 @@ public class DashBoard {
             new InventoryView("Inventory3",data);
 
         });
-
-        layout.setTop(topContainer);
-        menuBar=new MenuBar();
-        setupMenuBar();
-        topContainer.getChildren().addAll(menuBar);
-        Tabs.getChildren().addAll(Inventory1Button, Inventory2Buton, Inventory3Button);
-        topContainer.getChildren().addAll(Tabs);
-
-
-        //center
-        //Show Log msg and bla blas
-
-
-        //Right
-        VBox rightContainer=new VBox(10);
         rightContainer.setAlignment(Pos.CENTER);
         layout.setRight(rightContainer);
+        rightContainer.getChildren().addAll(Inventory1Button,Inventory2Buton,Inventory3Button);
 
 
 
