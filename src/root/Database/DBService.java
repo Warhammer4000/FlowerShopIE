@@ -44,7 +44,7 @@ public class DBService {
     public List<Product> getTableData(String tableName){
         List<Product> productList=new ArrayList<>();
         String query="SELECT ID,Name,Quantity,PurchaseDate,Price,Vendor FROM "+tableName+"";
-        System.out.print(query);
+        System.out.println(query);
         try {
             ResultSet rs = dbCon.selectQuery(query);
             while (rs.next()) {
@@ -73,7 +73,7 @@ public class DBService {
     }
 
     public boolean insertNewProduct(String tableName, Product p){
-        String query="INSERT  INTO "+tableName+" VALUES ("+p.getId()+",'"+p.getName()+"',"+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+",'"+p.getVendor()+"');";
+        String query="INSERT  INTO "+tableName+" VALUES ("+p.getId()+",'"+p.getName()+"',"+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+",'"+p.getVendor()+"')";
         try{
             System.out.print(query);
             dbCon.selectQuery(query);

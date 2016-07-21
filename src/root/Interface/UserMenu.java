@@ -53,6 +53,7 @@ public class UserMenu {
         Inventory1Button =new Button("Inventory1");
         Inventory1Button.setOnAction(event -> {
             List<Product> data=new DBService().getTableData("Inventory1");
+
             updateTableData(data);
         });
         Inventory2Buton =new Button("Inventory2");
@@ -119,7 +120,7 @@ public class UserMenu {
 
         //id
         TableColumn<Product, Integer> idColumn = new TableColumn<>("ID");
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         idColumn.setStyle("-fx-alignment:CENTER;");
 
 
@@ -160,9 +161,7 @@ public class UserMenu {
         table.getColumns().add(vendorColumn);
     }
 
-    public void updateTable(String tableName){
-        //Search the DB using name and update table
-    }
+
 
     public void setupMenuBar(){
         Menu accountMenu= new Menu();
@@ -246,10 +245,13 @@ public class UserMenu {
     }
 
     public void updateTableData(List<Product> data){
+        table.getColumns().removeAll();
+        table.refresh();
         try {
-
             for (Product p : data) {
+
                 table.getItems().addAll(p);
+                System.out.println(p.getId());
             }
 
             table.refresh();
