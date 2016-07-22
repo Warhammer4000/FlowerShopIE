@@ -46,7 +46,7 @@ public class DBService {
     public boolean insertNewProduct(Product p){
         String query="INSERT  INTO PRODUCT VALUES ("+p.getId()+",'"+p.getName()+"')";
         try{
-            System.out.print(query);
+            //System.out.print(query);
             dbCon.selectQuery(query);
 
 

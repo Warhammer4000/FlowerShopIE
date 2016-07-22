@@ -9,6 +9,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import root.CustomControl.NumericTextField;
 import root.DataClass.Product;
+import root.DataClass.ProductInfo;
 import root.Database.DBService;
 
 import java.time.LocalDate;
@@ -47,7 +48,7 @@ public class EditProduct {
     private  TableView table;
     private String tableName;
 
-    public EditProduct(String tableName, TableView table,Product p){
+    public EditProduct(String tableName, TableView table,ProductInfo p){
         this.tableName=tableName;
         this.table=table;
 
@@ -119,7 +120,7 @@ public class EditProduct {
     public void addProduct(){
         //validate Values
         try {
-            Product p;
+            ProductInfo p;
             int ID=Integer.parseInt(id.getText());
             String Name=this.name.getText();
             int Quantity=Integer.parseInt(quantity.getText());
@@ -131,9 +132,8 @@ public class EditProduct {
             String Vendor=vendor.getText();
 
             //create a product object
-            p=new Product(ID,Name,Quantity,Date,Price,Vendor);
-            DBService dbService=new DBService();
-            dbService.insertNewProduct(tableName,p);
+            p=new ProductInfo(ID,Name,Quantity,Date,Price,Vendor);
+
 
             table.getItems().addAll(p);
 
