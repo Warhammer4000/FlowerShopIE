@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import root.App.Main;
-import root.DataClass.Product;
+import root.DataClass.ProductInfo;
 import root.DataClass.User;
 import root.Database.DBService;
 
@@ -43,6 +43,8 @@ public class DashBoard {
         layout=new BorderPane();
         //top
         VBox topContainer=new VBox();//this will hold top stuffs
+        searchButton=new Button("Search");
+
         HBox Tabs=new HBox(5);
 
 
@@ -50,13 +52,14 @@ public class DashBoard {
         menuBar=new MenuBar();
         setupMenuBar();
         topContainer.getChildren().addAll(menuBar);
-        topContainer.getChildren().addAll(Tabs);
+        topContainer.getChildren().addAll(searchButton);
 
 
         //center
         //Show Log msg and bla blas
         TabPane Tabpane=new TabPane();
         Tab log = new Tab();
+        log.setClosable(false);
         log.setText("Log");
         Tabpane.getTabs().add(log);
 
@@ -67,20 +70,20 @@ public class DashBoard {
         Tabs.setAlignment(Pos.CENTER);
         Inventory1Button =new Button("Inventory1");
         Inventory1Button.setOnAction(event -> {
-            List<Product> data=new DBService().getTableData("Inventory1");
+            List<ProductInfo> data=new DBService().getTableData("Inventory1");
             new InventoryView("Inventory1",data);
 
         });
         Inventory2Buton =new Button("Inventory2");
         Inventory2Buton.setOnAction(event -> {
-            List<Product> data=new DBService().getTableData("Inventory2");
+            List<ProductInfo> data=new DBService().getTableData("Inventory2");
             new InventoryView("Inventory2",data);
 
 
         });
         Inventory3Button =new Button("Inventory3");
         Inventory3Button.setOnAction(event -> {
-            List<Product> data=new DBService().getTableData("Inventory3");
+            List<ProductInfo> data=new DBService().getTableData("Inventory3");
             new InventoryView("Inventory3",data);
 
         });
@@ -94,8 +97,6 @@ public class DashBoard {
         VBox leftContainer=new VBox(10);
         leftContainer.setAlignment(Pos.CENTER);
         layout.setLeft(leftContainer);
-        searchButton=new Button("Search");
-        leftContainer.getChildren().addAll(searchButton);
 
         //bottom
         //bot will show A status Update after each exection Performed
@@ -106,6 +107,8 @@ public class DashBoard {
 
     }
     public void setupMenuBar(){
+
+        //account Menu
         Menu accountMenu= new Menu();
         accountMenu.setText("Account");
 
@@ -121,8 +124,29 @@ public class DashBoard {
             main.getWindow().setScene(new Login(main).GetScene());
         });
         accountMenu.getItems().add(logout);
-
         menuBar.getMenus().addAll(accountMenu);
+
+        //productMenu
+        Menu productMenu= new Menu();
+        productMenu.setText("Product");
+
+        MenuItem addNewProduct= new MenuItem("Add");
+        addNewProduct.setOnAction(event ->{
+            //new window with adding new ProductInfo Option
+
+        });
+        productMenu.getItems().add(addNewProduct);
+
+        MenuItem viewProduct= new MenuItem("View");
+        viewProduct.setOnAction(event -> {
+            //shows a list of unique products
+            new productListView();
+        });
+        productMenu.getItems().add(viewProduct);
+
+        menuBar.getMenus().addAll(productMenu);
+
+
     }
 
     public void passwordChange(User user){

@@ -10,20 +10,20 @@ public class Inventory
 {
     private int id;
     private String  Name ;
-    private List<Product> products;
+    private List<ProductInfo> productInfos;
 
     //Constructor 1 to Make new inventory
     public Inventory(int id,String name) {
         this.id=id;
         this.Name = name;
-        products=new ArrayList<>();
+        productInfos =new ArrayList<>();
     }
 
 
     public boolean LoadList(){
         try{
             //fetch data from Dataase search using the this.name
-            //fill the arraylist of products
+            //fill the arraylist of productInfos
         }catch (Exception e){
             //if Failed
             System.out.println("Could not load list");
@@ -49,7 +49,7 @@ public class Inventory
         this.Name = name;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<ProductInfo> getProductInfos() {
+        return productInfos;
     }
 }

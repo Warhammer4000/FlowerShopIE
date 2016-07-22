@@ -3,7 +3,10 @@ package root.Interface;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -11,15 +14,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import root.DataClass.ProductInfo;
+import root.DataClass.Product;
+import root.Database.DBService;
 
-import java.util.Date;
+
 import java.util.List;
 
 /**
  * Created by Ehtesham on 7/19/2016.
  */
-public class InventoryView {
+public class productListView {
 
 
     private Stage window;
@@ -37,7 +41,7 @@ public class InventoryView {
 
     private Label status;
 
-    public InventoryView(String tableName,List<ProductInfo> data){
+    public productListView(){
 
         layout=new BorderPane();
         //top
@@ -53,7 +57,7 @@ public class InventoryView {
         //center
         table=new TableView();
         setTable();
-        updateTableData(data);
+        updateTableData();
         layout.setCenter(table);
 
 
@@ -63,7 +67,7 @@ public class InventoryView {
         layout.setRight(rightContainer);
         addButton=new Button("+ADD");
         addButton.setOnAction(event -> {
-            new AddProductInfo(tableName,table);
+            //new AddProductInfo();
         });
         editButton=new Button("Edit");
         removeButton=new Button("Remove");
@@ -100,46 +104,23 @@ public class InventoryView {
 
 
         //id
-        TableColumn<ProductInfo, Integer> idColumn = new TableColumn<>("ID");
+        TableColumn<Product, Integer> idColumn = new TableColumn<>("ID");
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         idColumn.setStyle("-fx-alignment:CENTER;");
 
 
         //name
-        TableColumn<ProductInfo, String> nameColumn = new TableColumn<>("Name");
+        TableColumn<Product, String> nameColumn = new TableColumn<>("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
         nameColumn.setStyle("-fx-alignment:CENTER;");
 
-        //Price
-        TableColumn<ProductInfo, Double> priceColumn = new TableColumn<>("Price");
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
-        priceColumn.setStyle("-fx-alignment:CENTER;");
 
-
-        //Quantity
-        TableColumn<ProductInfo, Integer> quantityColumn = new TableColumn<>("Quantity");
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
-        quantityColumn.setStyle("-fx-alignment:CENTER;");
-
-
-        //Date
-        TableColumn<ProductInfo, Date> dateColumn = new TableColumn<>("Purchase Date");
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseDate"));
-        dateColumn.setStyle("-fx-alignment:CENTER;");
-
-        //Vendor
-        TableColumn<ProductInfo, String> vendorColumn = new TableColumn<>("Vendor");
-        vendorColumn.setCellValueFactory(new PropertyValueFactory<>("vendor"));
-        vendorColumn.setStyle("-fx-alignment:CENTER;");
 
 
         //addColumns on table
         table.getColumns().add(idColumn);
         table.getColumns().add(nameColumn);
-        table.getColumns().add(priceColumn);
-        table.getColumns().add(quantityColumn);
-        table.getColumns().add(dateColumn);
-        table.getColumns().add(vendorColumn);
+
     }
 
 
@@ -148,9 +129,11 @@ public class InventoryView {
 
 
 
-    public void updateTableData(List<ProductInfo> data){
+    public void updateTableData(){
+        //get data fromDatabase
+        List<Product> data=new DBService().getProducts();
         try {
-            for (ProductInfo p : data) {
+            for (Product p : data) {
 
                 table.getItems().addAll(p);
             }
@@ -161,16 +144,15 @@ public class InventoryView {
         }
     }
     public  void DeleteButtonPress(){
-        //// TODO Delete item from DB 
-        ObservableList<ProductInfo> accountSelected , allAccounts;
-        accountSelected = table.getSelectionModel().getSelectedItems();
-        allAccounts = table.getItems();
+        ObservableList<Product> productSelected , allProducts;
+        productSelected = table.getSelectionModel().getSelectedItems();
+        allProducts = table.getItems();
 
         if (!table.getSelectionModel().isEmpty()) {
-            accountSelected.forEach(allAccounts::remove);
+            productSelected.forEach(allProducts::remove);
             status.setText("Row Deleted");
             status.setTextFill(Color.web("Red"));
-            table.refresh();
+
         }
         else {
             status.setText("No Rows Selected");

@@ -1,6 +1,7 @@
 package root.Database;
 
 import root.DataClass.Product;
+import root.DataClass.ProductInfo;
 import root.DataClass.User;
 
 import java.sql.ResultSet;
@@ -41,15 +42,32 @@ public class DBService {
         return true;
     }
 
-    public List<Product> getTableData(String tableName){
-        List<Product> productList=new ArrayList<>();
-        String query="SELECT ID,Name,Quantity,PurchaseDate,Price,Vendor FROM "+tableName+"";
+    //Product
+    public boolean insertNewProduct(Product p){
+        String query="INSERT  INTO PRODUCT VALUES ("+p.getId()+",'"+p.getName()+"')";
+        try{
+            System.out.print(query);
+            dbCon.selectQuery(query);
+
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Couldn't update Table");
+            return false;
+        }
+        return true;
+    }
+
+    public List<Product> getProducts(){
+        List<Product> productList =new ArrayList<>();
+        String query="SELECT ID,Name FROM PRODUCT";
         System.out.println(query);
         try {
             ResultSet rs = dbCon.selectQuery(query);
             while (rs.next()) {
                 //rs.bla bla create product
-                productList.add(new Product(rs.getInt("ID"),rs.getString("Name"),rs.getInt("Quantity"),rs.getDate("PurchaseDate"),rs.getDouble("Price"),rs.getString("Vendor")));
+                productList.add(new Product(rs.getInt("ID"),rs.getString("Name")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,6 +75,10 @@ public class DBService {
 
         return productList;
     }
+
+
+
+
 
     public User getUser(String username, String password) {
         String query="SELECT ID,Name,Password FROM SCOTT.\"User\" WHERE name='"+username+"' and Password='"+password+"'";
@@ -72,13 +94,12 @@ public class DBService {
         return user;
     }
 
-    public boolean insertNewProduct(String tableName, Product p){
+    //productInfo
+    public boolean insertNewProductInfo(String tableName, ProductInfo p){
         String query="INSERT  INTO "+tableName+" VALUES ("+p.getId()+",'"+p.getName()+"',"+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+",'"+p.getVendor()+"')";
         try{
             System.out.print(query);
             dbCon.selectQuery(query);
-
-
         }
         catch (Exception e){
             e.printStackTrace();
@@ -86,5 +107,22 @@ public class DBService {
             return false;
         }
         return true;
+    }
+
+    public List<ProductInfo> getTableData(String tableName){
+        List<ProductInfo> productInfoList =new ArrayList<>();
+        String query="SELECT ID,Name,Quantity,PurchaseDate,Price,Vendor FROM "+tableName+"";
+        System.out.println(query);
+        try {
+            ResultSet rs = dbCon.selectQuery(query);
+            while (rs.next()) {
+                //rs.bla bla create product
+                productInfoList.add(new ProductInfo(rs.getInt("ID"),rs.getString("Name"),rs.getInt("Quantity"),rs.getDate("PurchaseDate"),rs.getDouble("Price"),rs.getString("Vendor")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return productInfoList;
     }
 }
