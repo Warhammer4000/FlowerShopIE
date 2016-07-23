@@ -7,30 +7,28 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-/**
- * Created by Ehtesham on 7/22/2016.
- */
-public class AutoCompleteComboBoxListener<T> implements EventHandler<KeyEvent> {
+public class AutoCompleteComboBox<T> extends ComboBox<T> {
+    public AutoCompleteComboBox(){
+        new AutoCompleteComboBoxListener<>(this);
+    }
+
+}
+
+class AutoCompleteComboBoxListener<T> implements EventHandler<KeyEvent> {
 
     private ComboBox comboBox;
     private StringBuilder sb;
-    private ObservableList<T> data;
+    private ObservableList data;
     private boolean moveCaretToPos = false;
     private int caretPos;
 
-    public AutoCompleteComboBoxListener(final ComboBox comboBox) {
+    AutoCompleteComboBoxListener(final ComboBox comboBox) {
         this.comboBox = comboBox;
         sb = new StringBuilder();
         data = comboBox.getItems();
 
         this.comboBox.setEditable(true);
-        this.comboBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
-
-            @Override
-            public void handle(KeyEvent t) {
-                comboBox.hide();
-            }
-        });
+        this.comboBox.setOnKeyPressed(t -> comboBox.hide());
         this.comboBox.setOnKeyReleased(AutoCompleteComboBoxListener.this);
     }
 
@@ -63,20 +61,18 @@ public class AutoCompleteComboBoxListener<T> implements EventHandler<KeyEvent> {
         }
 
         ObservableList list = FXCollections.observableArrayList();
-        for (int i=0; i<data.size(); i++) {
-            if(data.get(i).toString().toLowerCase().startsWith(
+        for (Object aData : data) {
+            if (aData.toString().toLowerCase().startsWith(
                     AutoCompleteComboBoxListener.this.comboBox
                             .getEditor().getText().toLowerCase())) {
-                list.add(data.get(i));
+                list.add(aData);
             }
         }
         String t = comboBox.getEditor().getText();
 
         comboBox.setItems(list);
         comboBox.getEditor().setText(t);
-        if(!moveCaretToPos) {
-            caretPos = -1;
-        }
+        if(!moveCaretToPos) caretPos = -1;
         moveCaret(t.length());
         if(!list.isEmpty()) {
             comboBox.show();

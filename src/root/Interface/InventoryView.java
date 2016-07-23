@@ -16,9 +16,6 @@ import root.DataClass.ProductInfo;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Ehtesham on 7/19/2016.
- */
 public class InventoryView {
 
 
@@ -87,6 +84,7 @@ public class InventoryView {
         window=new Stage();
         window.setScene(scene);
         window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle(tableName);
         window.show();
 
     }

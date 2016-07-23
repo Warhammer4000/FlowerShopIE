@@ -65,11 +65,18 @@ public class productListView {
         VBox rightContainer=new VBox(10);
         rightContainer.setAlignment(Pos.CENTER);
         layout.setRight(rightContainer);
+
+
         addButton=new Button("+ADD");
         addButton.setOnAction(event -> {
-            //new AddProductInfo();
+            new AddProduct("Product",table);
         });
+
         editButton=new Button("Edit");
+        editButton.setOnAction(event -> {
+            EditButtonPress();
+        });
+
         removeButton=new Button("Remove");
         removeButton.setOnAction(event -> {
             DeleteButtonPress();
@@ -91,6 +98,7 @@ public class productListView {
         window=new Stage();
         window.setScene(scene);
         window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Products");
         window.show();
 
     }
@@ -161,6 +169,22 @@ public class productListView {
 
 
     }
+
+    public  void EditButtonPress(){
+        ObservableList<Product> productSelected;
+        productSelected = table.getSelectionModel().getSelectedItems();
+
+        if (!table.getSelectionModel().isEmpty()) {
+            new EditProduct("PRODUCT",table,productSelected.get(0));
+        }
+        else {
+            status.setText("No Row Selected");
+            status.setTextFill(Color.web("Blue"));
+        }
+
+
+    }
+
 
 
 

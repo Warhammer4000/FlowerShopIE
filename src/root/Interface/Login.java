@@ -13,9 +13,7 @@ import root.DataClass.User;
 import root.Database.DBService;
 
 
-/**
- * Created by tazim on 7/17/2016.
- */
+
 public class Login {
     private User user;
     //Building block
@@ -40,6 +38,7 @@ public class Login {
             if(LoginRequest(nameField.getText(),passwordField.getText())){
                 //set platformScene
                 main.getWindow().setScene(new DashBoard(main,user).GetScene());
+                main.getWindow().setTitle("Dashboard");
 
             }
         });
@@ -67,7 +66,7 @@ public class Login {
         return this.scene;
     }
 
-    public boolean LoginRequest(String name,String password){
+    private boolean LoginRequest(String name, String password){
         user= new DBService().getUser(name,password);
         //check database if found return true
         if(user!=null){
@@ -82,7 +81,7 @@ public class Login {
 
     }
 
-    public void statusUpdate(String status){
+    private void statusUpdate(String status){
         this.status.setText(status);
         this.status.setVisible(true);
     }

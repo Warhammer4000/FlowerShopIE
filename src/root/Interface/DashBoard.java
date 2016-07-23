@@ -16,10 +16,8 @@ import root.Database.DBService;
 
 import java.util.List;
 
-/**
- * Created by Ehtesham on 7/21/2016.
- */
-public class DashBoard {
+
+class DashBoard {
     private Main main;
     private User user;
 
@@ -37,76 +35,20 @@ public class DashBoard {
 
     private Label status;
 
-    public DashBoard(Main main, User user){
+    DashBoard(Main main, User user){
         this.main=main;
         this.user=user;
         layout=new BorderPane();
-        //top
-        VBox topContainer=new VBox();//this will hold top stuffs
-        searchButton=new Button("Search");
-
-        HBox Tabs=new HBox(5);
-
-
-        layout.setTop(topContainer);
-        menuBar=new MenuBar();
-        setupMenuBar();
-        topContainer.getChildren().addAll(menuBar);
-        topContainer.getChildren().addAll(searchButton);
-
-
-        //center
-        //Show Log msg and bla blas
-        TabPane Tabpane=new TabPane();
-        Tab log = new Tab();
-        log.setClosable(false);
-        log.setText("Log");
-        Tabpane.getTabs().add(log);
-
-        layout.setCenter(Tabpane);
-
-        //Right
-        VBox rightContainer=new VBox(10);
-        Tabs.setAlignment(Pos.CENTER);
-        Inventory1Button =new Button("Inventory1");
-        Inventory1Button.setOnAction(event -> {
-            List<ProductInfo> data=new DBService().getTableData("Inventory1");
-            new InventoryView("Inventory1",data);
-
-        });
-        Inventory2Buton =new Button("Inventory2");
-        Inventory2Buton.setOnAction(event -> {
-            List<ProductInfo> data=new DBService().getTableData("Inventory2");
-            new InventoryView("Inventory2",data);
-
-
-        });
-        Inventory3Button =new Button("Inventory3");
-        Inventory3Button.setOnAction(event -> {
-            List<ProductInfo> data=new DBService().getTableData("Inventory3");
-            new InventoryView("Inventory3",data);
-
-        });
-        rightContainer.setAlignment(Pos.CENTER);
-        layout.setRight(rightContainer);
-        rightContainer.getChildren().addAll(Inventory1Button,Inventory2Buton,Inventory3Button);
-
-
-
-        //Left
-        VBox leftContainer=new VBox(10);
-        leftContainer.setAlignment(Pos.CENTER);
-        layout.setLeft(leftContainer);
-
-        //bottom
-        //bot will show A status Update after each exection Performed
-        status=new Label();
-        layout.setBottom(status);
+        setupTopContainer();
+        setupCenterContainer();
+        setupRightContainer();
+        setupLeftContainer();
+        setupCenterContainer();
 
         scene=new Scene(layout,800,600);
 
     }
-    public void setupMenuBar(){
+    private void setupMenuBar(){
 
         //account Menu
         Menu accountMenu= new Menu();
@@ -120,9 +62,7 @@ public class DashBoard {
         accountMenu.getItems().add(changePassword);
 
         MenuItem logout= new MenuItem("Logout");
-        logout.setOnAction(event -> {
-            main.getWindow().setScene(new Login(main).GetScene());
-        });
+        logout.setOnAction(event -> main.getWindow().setScene(new Login(main).GetScene()));
         accountMenu.getItems().add(logout);
         menuBar.getMenus().addAll(accountMenu);
 
@@ -131,10 +71,7 @@ public class DashBoard {
         productMenu.setText("Product");
 
         MenuItem addNewProduct= new MenuItem("Add");
-        addNewProduct.setOnAction(event ->{
-            //new window with adding new ProductInfo Option
-
-        });
+        addNewProduct.setOnAction(event -> new AddProduct("Product"));
         productMenu.getItems().add(addNewProduct);
 
         MenuItem viewProduct= new MenuItem("View");
@@ -149,7 +86,7 @@ public class DashBoard {
 
     }
 
-    public void passwordChange(User user){
+    private void passwordChange(User user){
         Stage passowordChangeWindow= new Stage();
         passowordChangeWindow.setTitle("Change Password");
         Label status=new Label("");
@@ -210,8 +147,80 @@ public class DashBoard {
 
     }
 
+    private void setupTopContainer(){
+        //top
+        VBox topContainer=new VBox();//this will hold top stuffs
+        searchButton=new Button("Search");
 
-    public Scene GetScene(){
+        HBox Tabs=new HBox(5);
+
+
+        layout.setTop(topContainer);
+        menuBar=new MenuBar();
+        setupMenuBar();
+        topContainer.getChildren().addAll(menuBar);
+        topContainer.getChildren().addAll(searchButton);
+        Tabs.setAlignment(Pos.CENTER);
+
+    }
+
+
+    private void setupCenterContainer(){
+        //center
+        //Show Log msg and bla blas
+        TabPane Tabpane=new TabPane();
+        Tab log = new Tab();
+        log.setClosable(false);
+        log.setText("Log");
+        Tabpane.getTabs().add(log);
+
+        layout.setCenter(Tabpane);
+    }
+
+    private void setupRightContainer(){
+        //Right
+        VBox rightContainer=new VBox(10);
+
+        Inventory1Button =new Button("Inventory1");
+        Inventory1Button.setOnAction(event -> {
+            List<ProductInfo> data=new DBService().getTableData("Inventory1");
+            new InventoryView("Inventory1",data);
+
+        });
+        Inventory2Buton =new Button("Inventory2");
+        Inventory2Buton.setOnAction(event -> {
+            List<ProductInfo> data=new DBService().getTableData("Inventory2");
+            new InventoryView("Inventory2",data);
+
+
+        });
+        Inventory3Button =new Button("Inventory3");
+        Inventory3Button.setOnAction(event -> {
+            List<ProductInfo> data=new DBService().getTableData("Inventory3");
+            new InventoryView("Inventory3",data);
+
+        });
+        rightContainer.setAlignment(Pos.CENTER);
+        layout.setRight(rightContainer);
+        rightContainer.getChildren().addAll(Inventory1Button,Inventory2Buton,Inventory3Button);
+    }
+
+    private void setupLeftContainer(){
+        //Left
+        VBox leftContainer=new VBox(10);
+        leftContainer.setAlignment(Pos.CENTER);
+        layout.setLeft(leftContainer);
+    }
+
+    public void setupBotContainer(){
+        //bottom
+        //bot will show A status Update after each exection Performed
+        status=new Label();
+        layout.setBottom(status);
+    }
+
+
+    Scene GetScene(){
         return this.scene;
     }
 }

@@ -1,15 +1,18 @@
 package root.DataClass;
 
-/**
- * Created by tazim on 7/22/2016.
- */
+
 public class Product {
-    int id;
-    String name;
+    private int id;
+    private String name;
 
     public Product(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 
     public int getId() {

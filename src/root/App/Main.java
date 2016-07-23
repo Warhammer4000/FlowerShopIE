@@ -10,6 +10,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         window =primaryStage;
         window.setScene(new Login(this).GetScene());
+        window.setTitle("Login");
         window.show();
 
 

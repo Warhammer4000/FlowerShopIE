@@ -11,10 +11,8 @@ import root.CustomControl.NumericTextField;
 import root.DataClass.Product;
 import root.Database.DBService;
 
-/**
- * Created by Ehtesham on 7/20/2016.
- */
-public class AddProduct {
+
+class AddProduct {
     private Label idLable;
     private NumericTextField id;
 
@@ -32,25 +30,21 @@ public class AddProduct {
     private  TableView table;
     private String tableName;
 
-    public AddProduct(String tableName, TableView table){
-        this.tableName=tableName;
-        this.table=table;
 
-        idLable=new Label("ID");
+    private void setup(){
+        idLable=new Label("Product ID");
         id=new NumericTextField();
         id.setPromptText("Ex.1(number)");
         id.setMaxSize(200, 20);
 
-        nameLable=new Label("Name");
+        nameLable=new Label("Product Name");
         name=new TextField();
         name.setPromptText("Rose");
         name.setMaxSize(200, 20);
 
 
-        submitButton=new Button("Submit");
-        submitButton.setOnAction(event -> {
-            addProduct();
-        });
+        submitButton=new Button("+Add");
+        submitButton.setOnAction(event -> addProduct());
         status = new Label("");
 
         layout=new VBox(2);
@@ -65,12 +59,27 @@ public class AddProduct {
         window=new Stage();
         window.setScene(scene);
         window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("NEW PRODUCT");
         window.show();
+    }
 
+
+
+    AddProduct(String tableName){
+        this.tableName=tableName;
+        setup();
 
     }
 
-    public void addProduct(){
+
+
+    AddProduct(String tableName, TableView table){
+        this.tableName=tableName;
+        this.table=table;
+        setup();
+    }
+
+    private void addProduct(){
         //validate Values
         try {
             Product p;
@@ -82,11 +91,11 @@ public class AddProduct {
             p=new Product(ID,Name);
             DBService dbService=new DBService();
             dbService.insertNewProduct(p);
-            table.refresh();
-
+            status.setText("Row Inserted");
+            status.setTextFill(Color.valueOf("Green"));
 
         }catch (Exception e){
-            status.setText("Invalid Price input");
+            status.setText("Invalid Input");
             status.setTextFill(Color.valueOf("Red"));
         }
 

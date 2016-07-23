@@ -19,66 +19,8 @@ public class DBService {
 
     }
 
-    private boolean dbConnectionCheck() {
-        return dbCon.connectionCheck();
-    }
 
-    //drops user Table when run
-    /*public boolean tableDrop(){
-        String query = "DROP table User";
-        try{
-            dbCon.inUpdateDelete(query);
-        }
-        catch (Exception e){return false;}
-        return true;
-    }*/
-
-    public boolean updatePassword(String name,String password){
-        String query="UPDATE SCOTT.\"User\"SET Password='"+password+"' WHERE name='"+name+"'";
-        try{
-            dbCon.inUpdateDelete(query);
-        }
-        catch (Exception e){return false;}
-        return true;
-    }
-
-    //Product
-    public boolean insertNewProduct(Product p){
-        String query="INSERT  INTO PRODUCT VALUES ("+p.getId()+",'"+p.getName()+"')";
-        try{
-            //System.out.print(query);
-            dbCon.selectQuery(query);
-
-
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            System.out.println("Couldn't update Table");
-            return false;
-        }
-        return true;
-    }
-
-    public List<Product> getProducts(){
-        List<Product> productList =new ArrayList<>();
-        String query="SELECT ID,Name FROM PRODUCT";
-        System.out.println(query);
-        try {
-            ResultSet rs = dbCon.selectQuery(query);
-            while (rs.next()) {
-                //rs.bla bla create product
-                productList.add(new Product(rs.getInt("ID"),rs.getString("Name")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return productList;
-    }
-
-
-
-
+    //user
 
     public User getUser(String username, String password) {
         String query="SELECT ID,Name,Password FROM SCOTT.\"User\" WHERE name='"+username+"' and Password='"+password+"'";
@@ -94,15 +36,52 @@ public class DBService {
         return user;
     }
 
+    public boolean updatePassword(String name,String password){
+        String query="UPDATE SCOTT.\"User\"SET Password='"+password+"' WHERE name='"+name+"'";
+        try{
+            dbCon.inUpdateDelete(query);
+        }
+        catch (Exception e){return false;}
+        return true;
+    }
+
+    //Product
+    public boolean insertNewProduct(Product p){
+        String query="INSERT  INTO PRODUCT VALUES ("+p.getId()+",'"+p.getName()+"')";
+        try{
+            dbCon.selectQuery(query);
+        }
+        catch (Exception e){
+            System.out.println("Couldn't update Table");
+            return false;
+        }
+        return true;
+    }
+
+    public List<Product> getProducts(){
+        List<Product> productList =new ArrayList<>();
+        String query="SELECT ID,Name FROM PRODUCT";
+        try {
+            ResultSet rs = dbCon.selectQuery(query);
+            while (rs.next()) {
+                //rs.bla bla create product
+                productList.add(new Product(rs.getInt("ID"),rs.getString("Name")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return productList;
+    }
+
+
     //productInfo
     public boolean insertNewProductInfo(String tableName, ProductInfo p){
         String query="INSERT  INTO "+tableName+" VALUES ("+p.getId()+",'"+p.getName()+"',"+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+",'"+p.getVendor()+"')";
         try{
-            System.out.print(query);
             dbCon.selectQuery(query);
         }
         catch (Exception e){
-            e.printStackTrace();
             System.out.println("Couldn't update Table");
             return false;
         }
@@ -112,7 +91,6 @@ public class DBService {
     public List<ProductInfo> getTableData(String tableName){
         List<ProductInfo> productInfoList =new ArrayList<>();
         String query="SELECT ID,Name,Quantity,PurchaseDate,Price,Vendor FROM "+tableName+"";
-        System.out.println(query);
         try {
             ResultSet rs = dbCon.selectQuery(query);
             while (rs.next()) {

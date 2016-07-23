@@ -2,11 +2,8 @@ package root.Database;
 
 import java.sql.*;
 
-/**
- * Created by tazim on 7/18/2016.
- */
-public class DBcon {
-    private  String sqlQuery;
+
+class DBcon {
     private Connection con;
     private  Statement stmt;
     private  ResultSet result;

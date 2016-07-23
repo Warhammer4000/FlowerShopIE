@@ -3,29 +3,25 @@ package root.Interface;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-
-import root.CustomControl.AutoCompleteComboBox;
 import root.CustomControl.NumericTextField;
 import root.DataClass.Product;
 import root.DataClass.ProductInfo;
 import root.Database.DBService;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.List;
 
 
-class AddProductInfo {
-    private List<Product> availableProducts=new DBService().getProducts();
-    private AutoCompleteComboBox<Product> productPicker=new AutoCompleteComboBox<>();
+public class EditProductInfo {
 
+    private ComboBox<Product> productPicker=new ComboBox<>();
     private Label productLable;
+
 
     private Label quantityLable;
     private NumericTextField quantity;
@@ -49,37 +45,40 @@ class AddProductInfo {
     private  TableView table;
     private String tableName;
 
-    AddProductInfo(String tableName, TableView table){
+    public EditProductInfo(String tableName, TableView table, ProductInfo p){
         this.tableName=tableName;
         this.table=table;
 
         productLable=new Label("Product");
-        for(Product p : availableProducts){
-            productPicker.getItems().addAll(p);
-        }
-        productPicker.setEditable(true);
+        productPicker=new ComboBox<>();
+
+
 
         quantityLable=new Label("Quantity");
         quantity=new NumericTextField();
         quantity.setPromptText("Ex.500");
         quantity.setMaxSize(200, 20);
-
+        quantity.setText(String.valueOf(p.getQuantity()));
 
 
         purchaseDateLable=new Label("Purchase Date");
         purchaseDate=new DatePicker();
-        purchaseDate.setValue(LocalDate.now());
+        DateTimeFormatter dateFormatter =
+                DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        purchaseDate.setValue(LocalDate.parse(p.getPurchaseDate().toString(), dateFormatter));
 
 
         priceLable= new Label("Price");
         price=new TextField();
         price.setPromptText("Ex.500");
         price.setMaxSize(200, 20);
+        price.setText(String.valueOf(p.getPrice()));
 
         vendorLable=new Label("Vendor");
         vendor=new TextField();
         vendor.setPromptText("Ex.500");
         vendor.setMaxSize(200, 20);
+        vendor.setText(String.valueOf(p.getVendor()));
 
         submitButton=new Button("Submit");
         submitButton.setOnAction(event -> addProduct());
@@ -87,8 +86,6 @@ class AddProductInfo {
 
         layout=new VBox(2);
         layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(productLable,productPicker);
-
         layout.getChildren().addAll(quantityLable,quantity);
         layout.getChildren().addAll(purchaseDateLable,purchaseDate);
         layout.getChildren().addAll(priceLable,price);
@@ -100,12 +97,13 @@ class AddProductInfo {
         window=new Stage();
         window.setScene(scene);
         window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Product Info");
         window.show();
 
 
     }
 
-    public void addProduct(){
+    private void addProduct(){
         //validate Values
         try {
             ProductInfo p;
@@ -121,18 +119,19 @@ class AddProductInfo {
 
             //create a product object
             p=new ProductInfo(ID,Name,Quantity,Date,Price,Vendor);
-            DBService dbService=new DBService();
-            dbService.insertNewProductInfo(tableName,p);
-            //throws error if same product given
-            //table.getColumns().addAll(p);
-            table.refresh();
+
+
+            table.getItems().addAll(p);
+
+
+            price.setText("");
+            quantity.setText("");
+            vendor.setText("");
+
 
 
         }catch (Exception e){
             status.setText("Invalid Price input");
-            status.setTextFill(Color.valueOf("Red"));
-        }catch (Error e){
-            status.setText("Database Error");
             status.setTextFill(Color.valueOf("Red"));
         }
 
