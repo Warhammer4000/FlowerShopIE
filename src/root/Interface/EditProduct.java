@@ -74,7 +74,7 @@ class EditProduct {
             String Name=name.getText();
 
             //create a product object
-            p=new Product(ID,Name);
+            //p=new Product(ID,Name);
 
 
             //todo Show on table

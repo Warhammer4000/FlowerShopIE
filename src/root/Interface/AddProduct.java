@@ -19,6 +19,13 @@ class AddProduct {
     private Label nameLable;
     private TextField name;
 
+    private Label typeLable;
+    private TextField type;
+
+    private Label VendorLable;
+    private TextField vendor;
+
+
 
     private  Button submitButton;
     private  Label status;
@@ -27,8 +34,6 @@ class AddProduct {
     private Stage window;
     private Scene scene;
 
-    private  TableView table;
-    private String tableName;
 
 
     private void setup(){
@@ -43,6 +48,17 @@ class AddProduct {
         name.setMaxSize(200, 20);
 
 
+        typeLable=new Label("Product Type");
+        type=new TextField();
+        name.setMaxSize(200, 20);
+
+        VendorLable=new Label("Vendor Name");
+        vendor=new TextField();
+        vendor.setMaxSize(200, 20);
+
+
+
+
         submitButton=new Button("+Add");
         submitButton.setOnAction(event -> addProduct());
         status = new Label("");
@@ -51,33 +67,18 @@ class AddProduct {
         layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(idLable,id);
         layout.getChildren().addAll(nameLable,name);
+        layout.getChildren().addAll(typeLable,type);
+        layout.getChildren().addAll(VendorLable,vendor);
 
         layout.getChildren().addAll(submitButton);
         layout.getChildren().addAll(status);
 
-        scene=new Scene(layout,300,400);
-        window=new Stage();
-        window.setScene(scene);
-        window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("NEW PRODUCT");
-        window.show();
-    }
-
-
-
-    AddProduct(String tableName){
-        this.tableName=tableName;
-        setup();
 
     }
 
 
 
-    AddProduct(String tableName, TableView table){
-        this.tableName=tableName;
-        this.table=table;
-        setup();
-    }
+
 
     private void addProduct(){
         //validate Values
@@ -85,10 +86,10 @@ class AddProduct {
             Product p;
             int ID=Integer.parseInt(id.getText());
             String Name=this.name.getText();
-
-
+            String Type=this.type.getText();
+            String Vendor=this.vendor.getText();
             //create a product object
-            p=new Product(ID,Name);
+            p=new Product(ID,Name,Type,Vendor);
             DBService dbService=new DBService();
             dbService.insertNewProduct(p);
             status.setText("Row Inserted");

@@ -25,13 +25,8 @@ class DashBoard {
     private BorderPane layout;
     private MenuBar menuBar;
 
-    private Button Inventory1Button;
-    private Button Inventory2Buton;
-    private Button Inventory3Button;
+    TabPane Tabpane;
 
-
-
-    private Button searchButton;
 
     private Label status;
 
@@ -71,7 +66,7 @@ class DashBoard {
         productMenu.setText("Product");
 
         MenuItem addNewProduct= new MenuItem("Add");
-        addNewProduct.setOnAction(event -> new AddProduct("Product"));
+        //addNewProduct.setOnAction(event -> new AddProduct("Product"));
         productMenu.getItems().add(addNewProduct);
 
         MenuItem viewProduct= new MenuItem("View");
@@ -150,7 +145,7 @@ class DashBoard {
     private void setupTopContainer(){
         //top
         VBox topContainer=new VBox();//this will hold top stuffs
-        searchButton=new Button("Search");
+
 
         HBox Tabs=new HBox(5);
 
@@ -159,7 +154,6 @@ class DashBoard {
         menuBar=new MenuBar();
         setupMenuBar();
         topContainer.getChildren().addAll(menuBar);
-        topContainer.getChildren().addAll(searchButton);
         Tabs.setAlignment(Pos.CENTER);
 
     }
@@ -168,11 +162,8 @@ class DashBoard {
     private void setupCenterContainer(){
         //center
         //Show Log msg and bla blas
-        TabPane Tabpane=new TabPane();
-        Tab log = new Tab();
-        log.setClosable(false);
-        log.setText("Log");
-        Tabpane.getTabs().add(log);
+        Tabpane=new TabPane();
+        SetupInventoryTab();
 
         layout.setCenter(Tabpane);
     }
@@ -181,28 +172,7 @@ class DashBoard {
         //Right
         VBox rightContainer=new VBox(10);
 
-        Inventory1Button =new Button("Inventory1");
-        Inventory1Button.setOnAction(event -> {
-            List<ProductInfo> data=new DBService().getTableData("Inventory1");
-            new InventoryView("Inventory1",data);
 
-        });
-        Inventory2Buton =new Button("Inventory2");
-        Inventory2Buton.setOnAction(event -> {
-            List<ProductInfo> data=new DBService().getTableData("Inventory2");
-            new InventoryView("Inventory2",data);
-
-
-        });
-        Inventory3Button =new Button("Inventory3");
-        Inventory3Button.setOnAction(event -> {
-            List<ProductInfo> data=new DBService().getTableData("Inventory3");
-            new InventoryView("Inventory3",data);
-
-        });
-        rightContainer.setAlignment(Pos.CENTER);
-        layout.setRight(rightContainer);
-        rightContainer.getChildren().addAll(Inventory1Button,Inventory2Buton,Inventory3Button);
     }
 
     private void setupLeftContainer(){
@@ -223,4 +193,17 @@ class DashBoard {
     Scene GetScene(){
         return this.scene;
     }
+
+    public void SetupInventoryTab(){
+        Tab InventoryTab = new Tab();
+        InventoryTab.setClosable(false);
+        InventoryTab.setText("Inventory");
+        InventoryView inventoryView=new InventoryView();
+        InventoryTab.setContent(inventoryView.getLayout());
+
+
+
+        Tabpane.getTabs().add(InventoryTab);
+    }
+
 }

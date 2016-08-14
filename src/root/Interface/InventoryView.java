@@ -17,10 +17,6 @@ import java.util.Date;
 import java.util.List;
 
 public class InventoryView {
-
-
-    private Stage window;
-    private Scene scene;
     private BorderPane layout;
 
     private TableView table;
@@ -34,7 +30,7 @@ public class InventoryView {
 
     private Label status;
 
-    public InventoryView(String tableName,List<ProductInfo> data){
+    public InventoryView(){
 
         layout=new BorderPane();
         //top
@@ -50,7 +46,7 @@ public class InventoryView {
         //center
         table=new TableView();
         setTable();
-        updateTableData(data);
+        //updateTableData(data);
         layout.setCenter(table);
 
 
@@ -60,7 +56,7 @@ public class InventoryView {
         layout.setRight(rightContainer);
         addButton=new Button("+ADD");
         addButton.setOnAction(event -> {
-            new AddProductInfo(tableName,table);
+            //new AddProductInfo(tableName,table);
         });
         editButton=new Button("Edit");
         removeButton=new Button("Remove");
@@ -80,28 +76,16 @@ public class InventoryView {
         status=new Label();
         layout.setBottom(status);
 
-        scene=new Scene(layout,800,600);
-        window=new Stage();
-        window.setScene(scene);
-        window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle(tableName);
-        window.show();
 
     }
 
-    public Scene GetScene(){
-        return this.scene;
+    public BorderPane getLayout(){
+        return this.layout;
     }
+
 
     private void setTable() {
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
-
-        //id
-        TableColumn<ProductInfo, Integer> idColumn = new TableColumn<>("ID");
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        idColumn.setStyle("-fx-alignment:CENTER;");
-
 
         //name
         TableColumn<ProductInfo, String> nameColumn = new TableColumn<>("Name");
@@ -130,14 +114,21 @@ public class InventoryView {
         vendorColumn.setCellValueFactory(new PropertyValueFactory<>("vendor"));
         vendorColumn.setStyle("-fx-alignment:CENTER;");
 
+        //InventoryId
+        TableColumn<ProductInfo, Integer> InventoryidColumn = new TableColumn<>("Inventory No");
+        InventoryidColumn.setCellValueFactory(new PropertyValueFactory<>("inventoeryNo"));
+        InventoryidColumn.setStyle("-fx-alignment:CENTER;");
+
 
         //addColumns on table
-        table.getColumns().add(idColumn);
+
         table.getColumns().add(nameColumn);
         table.getColumns().add(priceColumn);
         table.getColumns().add(quantityColumn);
         table.getColumns().add(dateColumn);
         table.getColumns().add(vendorColumn);
+        table.getColumns().add(InventoryidColumn);
+
     }
 
 

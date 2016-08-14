@@ -65,7 +65,7 @@ public class DBService {
             ResultSet rs = dbCon.selectQuery(query);
             while (rs.next()) {
                 //rs.bla bla create product
-                productList.add(new Product(rs.getInt("ID"),rs.getString("Name")));
+                productList.add(new Product(rs.getInt("ID"),rs.getString("Name"),rs.getString("Type"),rs.getString("Vendor")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -69,12 +69,12 @@ public class productListView {
 
         addButton=new Button("+ADD");
         addButton.setOnAction(event -> {
-            new AddProduct("Product",table);
+            //new AddProduct("Product",table);
         });
 
         editButton=new Button("Edit");
         editButton.setOnAction(event -> {
-            EditButtonPress();
+            //EditButtonPress();
         });
 
         removeButton=new Button("Remove");

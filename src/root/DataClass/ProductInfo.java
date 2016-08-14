@@ -2,18 +2,18 @@ package root.DataClass;
 
 import java.util.Date;
 
-/**
- * Created by Fahmida Milee on 15/07/2016.
- */
+
 
 public class ProductInfo
 {
+    private Product product;
     private int Id;
     private String Name;
     private int Quantity;
     private Date PurchaseDate;
     private double Price;
     private String Vendor;
+    private int inventoeryNo;
 
 
     public ProductInfo(int id, String name, int quantity, Date purchaseDate, double price, String vendor) {
@@ -23,6 +23,22 @@ public class ProductInfo
         PurchaseDate = purchaseDate;
         Price = price;
         Vendor = vendor;
+    }
+
+    public int getInventoeryNo() {
+        return inventoeryNo;
+    }
+
+    public void setInventoeryNo(int inventoeryNo) {
+        this.inventoeryNo = inventoeryNo;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getId() {
