@@ -16,21 +16,20 @@ import root.DataClass.ProductInfo;
 import java.util.Date;
 import java.util.List;
 
-public class InventoryView {
+class InventoryView {
     private BorderPane layout;
 
     private TableView table;
 
 
 
-    private Button addButton;
     private Button removeButton;
     private Button editButton;
 
 
     private Label status;
 
-    public InventoryView(){
+    InventoryView(){
 
         layout=new BorderPane();
         //top
@@ -50,26 +49,25 @@ public class InventoryView {
         layout.setCenter(table);
 
 
-        //Right
-        VBox rightContainer=new VBox(10);
-        rightContainer.setAlignment(Pos.CENTER);
-        layout.setRight(rightContainer);
-        addButton=new Button("+ADD");
-        addButton.setOnAction(event -> {
-            //new AddProductInfo(tableName,table);
-        });
-        editButton=new Button("Edit");
-        removeButton=new Button("Remove");
-        removeButton.setOnAction(event -> {
-            DeleteButtonPress();
-        });
-        rightContainer.getChildren().addAll(addButton,editButton,removeButton);
-
-
         //Left
         VBox leftContainer=new VBox(10);
         leftContainer.setAlignment(Pos.CENTER);
         layout.setLeft(leftContainer);
+
+        editButton=new Button("Edit");
+        removeButton=new Button("Remove");
+        removeButton.setOnAction(event -> {
+           // DeleteButtonPress();
+        });
+        leftContainer.getChildren().addAll(editButton,removeButton);
+
+
+        //Right
+        VBox rightContainer=new VBox(10);
+        rightContainer.setAlignment(Pos.CENTER);
+        AddProductInfo ap=new AddProductInfo();
+        rightContainer.getChildren().addAll(ap.getLayout());
+        layout.setRight(rightContainer);
 
         //bottom
         //bot will show A status Update after each exection Performed
@@ -79,7 +77,7 @@ public class InventoryView {
 
     }
 
-    public BorderPane getLayout(){
+    BorderPane getLayout(){
         return this.layout;
     }
 

@@ -10,11 +10,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import root.App.Main;
-import root.DataClass.ProductInfo;
 import root.DataClass.User;
 import root.Database.DBService;
-
-import java.util.List;
 
 
 class DashBoard {
@@ -25,7 +22,7 @@ class DashBoard {
     private BorderPane layout;
     private MenuBar menuBar;
 
-    TabPane Tabpane;
+    private TabPane Tabpane;
 
 
     private Label status;
@@ -72,7 +69,7 @@ class DashBoard {
         MenuItem viewProduct= new MenuItem("View");
         viewProduct.setOnAction(event -> {
             //shows a list of unique products
-            new productListView();
+            new productView();
         });
         productMenu.getItems().add(viewProduct);
 
@@ -164,6 +161,7 @@ class DashBoard {
         //Show Log msg and bla blas
         Tabpane=new TabPane();
         SetupInventoryTab();
+        SetupProductsTab();
 
         layout.setCenter(Tabpane);
     }
@@ -194,7 +192,7 @@ class DashBoard {
         return this.scene;
     }
 
-    public void SetupInventoryTab(){
+    private void SetupInventoryTab(){
         Tab InventoryTab = new Tab();
         InventoryTab.setClosable(false);
         InventoryTab.setText("Inventory");
@@ -204,6 +202,16 @@ class DashBoard {
 
 
         Tabpane.getTabs().add(InventoryTab);
+    }
+
+    private void SetupProductsTab(){
+        Tab ProductTab = new Tab();
+        ProductTab.setClosable(false);
+        ProductTab.setText("Product");
+        productView productView=new productView();
+        ProductTab.setContent(productView.getLayout());
+
+        Tabpane.getTabs().add(ProductTab);
     }
 
 }

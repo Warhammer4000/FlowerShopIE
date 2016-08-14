@@ -20,28 +20,19 @@ import root.Database.DBService;
 
 import java.util.List;
 
-/**
- * Created by Ehtesham on 7/19/2016.
- */
-public class productListView {
 
-
-    private Stage window;
-    private Scene scene;
+class productView {
     private BorderPane layout;
 
     private TableView table;
 
-
-
-    private Button addButton;
     private Button removeButton;
     private Button editButton;
 
 
     private Label status;
 
-    public productListView(){
+    productView(){
 
         layout=new BorderPane();
         //top
@@ -57,21 +48,26 @@ public class productListView {
         //center
         table=new TableView();
         setTable();
-        updateTableData();
+        //updateTableData();
         layout.setCenter(table);
 
 
         //Right
         VBox rightContainer=new VBox(10);
         rightContainer.setAlignment(Pos.CENTER);
+        AddProduct ap=new AddProduct();
+        rightContainer.getChildren().addAll(ap.getLayout());
         layout.setRight(rightContainer);
 
 
-        addButton=new Button("+ADD");
-        addButton.setOnAction(event -> {
-            //new AddProduct("Product",table);
-        });
 
+
+
+
+
+        //Left
+
+        VBox leftContainer=new VBox(10);
         editButton=new Button("Edit");
         editButton.setOnAction(event -> {
             //EditButtonPress();
@@ -79,14 +75,11 @@ public class productListView {
 
         removeButton=new Button("Remove");
         removeButton.setOnAction(event -> {
-            DeleteButtonPress();
+            //DeleteButtonPress();
         });
-        rightContainer.getChildren().addAll(addButton,editButton,removeButton);
 
-
-        //Left
-        VBox leftContainer=new VBox(10);
         leftContainer.setAlignment(Pos.CENTER);
+        leftContainer.getChildren().addAll(editButton,removeButton);
         layout.setLeft(leftContainer);
 
         //bottom
@@ -94,17 +87,12 @@ public class productListView {
         status=new Label();
         layout.setBottom(status);
 
-        scene=new Scene(layout,800,600);
-        window=new Stage();
-        window.setScene(scene);
-        window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("Products");
-        window.show();
+
 
     }
 
-    public Scene GetScene(){
-        return this.scene;
+    BorderPane getLayout() {
+        return layout;
     }
 
     private void setTable() {

@@ -32,15 +32,12 @@ public class EditProductInfo {
     private Label priceLable;
     private TextField price;
 
-    private  Label vendorLable;
-    private TextField vendor;
 
     private  Button submitButton;
     private  Label status;
 
     private VBox layout;
-    private Stage window;
-    private Scene scene;
+
 
     private  TableView table;
     private String tableName;
@@ -74,11 +71,8 @@ public class EditProductInfo {
         price.setMaxSize(200, 20);
         price.setText(String.valueOf(p.getPrice()));
 
-        vendorLable=new Label("Vendor");
-        vendor=new TextField();
-        vendor.setPromptText("Ex.500");
-        vendor.setMaxSize(200, 20);
-        vendor.setText(String.valueOf(p.getVendor()));
+
+
 
         submitButton=new Button("Submit");
         submitButton.setOnAction(event -> addProduct());
@@ -89,16 +83,9 @@ public class EditProductInfo {
         layout.getChildren().addAll(quantityLable,quantity);
         layout.getChildren().addAll(purchaseDateLable,purchaseDate);
         layout.getChildren().addAll(priceLable,price);
-        layout.getChildren().addAll(vendorLable,vendor);
         layout.getChildren().addAll(submitButton);
         layout.getChildren().addAll(status);
 
-        scene=new Scene(layout,300,400);
-        window=new Stage();
-        window.setScene(scene);
-        window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("Product Info");
-        window.show();
 
 
     }
@@ -115,10 +102,10 @@ public class EditProductInfo {
             Date Date = java.sql.Date.valueOf(localDate);
 
             double Price=Double.parseDouble(this.price.getText());
-            String Vendor=vendor.getText();
+
 
             //create a product object
-            p=new ProductInfo(ID,Name,Quantity,Date,Price,Vendor);
+            p=new ProductInfo(ID,Name,Quantity,Date,Price,10);
 
 
             table.getItems().addAll(p);
@@ -126,7 +113,7 @@ public class EditProductInfo {
 
             price.setText("");
             quantity.setText("");
-            vendor.setText("");
+
 
 
 

@@ -1,12 +1,9 @@
 package root.Interface;
 
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import root.CustomControl.NumericTextField;
 import root.DataClass.Product;
 import root.Database.DBService;
@@ -27,16 +24,16 @@ class AddProduct {
 
 
 
-    private  Button submitButton;
+    private  Button AddButton;
     private  Label status;
 
     private VBox layout;
-    private Stage window;
-    private Scene scene;
 
+    VBox getLayout() {
+        return layout;
+    }
 
-
-    private void setup(){
+    AddProduct(){
         idLable=new Label("Product ID");
         id=new NumericTextField();
         id.setPromptText("Ex.1(number)");
@@ -59,8 +56,8 @@ class AddProduct {
 
 
 
-        submitButton=new Button("+Add");
-        submitButton.setOnAction(event -> addProduct());
+        AddButton =new Button("+Add");
+        AddButton.setOnAction(event -> addProduct());
         status = new Label("");
 
         layout=new VBox(2);
@@ -70,7 +67,7 @@ class AddProduct {
         layout.getChildren().addAll(typeLable,type);
         layout.getChildren().addAll(VendorLable,vendor);
 
-        layout.getChildren().addAll(submitButton);
+        layout.getChildren().addAll(AddButton);
         layout.getChildren().addAll(status);
 
 
@@ -89,9 +86,9 @@ class AddProduct {
             String Type=this.type.getText();
             String Vendor=this.vendor.getText();
             //create a product object
-            p=new Product(ID,Name,Type,Vendor);
-            DBService dbService=new DBService();
-            dbService.insertNewProduct(p);
+            //p=new Product(ID,Name,Type,Vendor);
+            //DBService dbService=new DBService();
+            //dbService.insertNewProduct(p);
             status.setText("Row Inserted");
             status.setTextFill(Color.valueOf("Green"));
 

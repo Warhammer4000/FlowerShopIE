@@ -60,7 +60,7 @@ public class DBService {
 
     public List<Product> getProducts(){
         List<Product> productList =new ArrayList<>();
-        String query="SELECT ID,Name FROM PRODUCT";
+        String query="SELECT ID,Name,Type,Vendor FROM PRODUCT";
         try {
             ResultSet rs = dbCon.selectQuery(query);
             while (rs.next()) {
@@ -77,7 +77,7 @@ public class DBService {
 
     //productInfo
     public boolean insertNewProductInfo(String tableName, ProductInfo p){
-        String query="INSERT  INTO "+tableName+" VALUES ("+p.getId()+",'"+p.getName()+"',"+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+",'"+p.getVendor()+"')";
+        String query="INSERT  INTO "+tableName+" VALUES ("+p.getId()+",'"+p.getName()+"',"+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+"')";
         try{
             dbCon.selectQuery(query);
         }
@@ -90,12 +90,12 @@ public class DBService {
 
     public List<ProductInfo> getTableData(String tableName){
         List<ProductInfo> productInfoList =new ArrayList<>();
-        String query="SELECT ID,Name,Quantity,PurchaseDate,Price,Vendor FROM "+tableName+"";
+        String query="SELECT ID,Name,Quantity,PurchaseDate,Price,InventoryNo FROM Inventory";
         try {
             ResultSet rs = dbCon.selectQuery(query);
             while (rs.next()) {
                 //rs.bla bla create product
-                productInfoList.add(new ProductInfo(rs.getInt("ID"),rs.getString("Name"),rs.getInt("Quantity"),rs.getDate("PurchaseDate"),rs.getDouble("Price"),rs.getString("Vendor")));
+                productInfoList.add(new ProductInfo(rs.getInt("ID"),rs.getString("Name"),rs.getInt("Quantity"),rs.getDate("PurchaseDate"),rs.getDouble("Price"),rs.getInt("InventoryNo")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

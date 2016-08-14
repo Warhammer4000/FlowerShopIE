@@ -22,7 +22,7 @@ import java.util.List;
 
 
 class AddProductInfo {
-    private List<Product> availableProducts=new DBService().getProducts();
+    private List<Product> availableProducts;
     private AutoCompleteComboBox<Product> productPicker=new AutoCompleteComboBox<>();
 
     private Label productLable;
@@ -36,24 +36,20 @@ class AddProductInfo {
     private Label priceLable;
     private TextField price;
 
-    private  Label vendorLable;
-    private TextField vendor;
 
-    private  Button submitButton;
+    private  Label InventoryNoLable;
+    private NumericTextField InventoryNo;
+
+
+    private  Button AddButton;
     private  Label status;
 
     private VBox layout;
-    private Stage window;
-    private Scene scene;
 
-    private  TableView table;
-    private String tableName;
-
-    AddProductInfo(String tableName, TableView table){
-        this.tableName=tableName;
-        this.table=table;
+    AddProductInfo(){
 
         productLable=new Label("Product");
+        availableProducts=new DBService().getProducts();
         for(Product p : availableProducts){
             productPicker.getItems().addAll(p);
         }
@@ -76,13 +72,16 @@ class AddProductInfo {
         price.setPromptText("Ex.500");
         price.setMaxSize(200, 20);
 
-        vendorLable=new Label("Vendor");
-        vendor=new TextField();
-        vendor.setPromptText("Ex.500");
-        vendor.setMaxSize(200, 20);
 
-        submitButton=new Button("Submit");
-        submitButton.setOnAction(event -> addProduct());
+
+
+        InventoryNoLable=new Label("Inventory No");
+        InventoryNo=new NumericTextField();
+        InventoryNo.setMaxSize(200, 20);
+
+
+        AddButton=new Button("+Add");
+        AddButton.setOnAction(event -> addProduct());
         status = new Label("");
 
         layout=new VBox(2);
@@ -92,20 +91,17 @@ class AddProductInfo {
         layout.getChildren().addAll(quantityLable,quantity);
         layout.getChildren().addAll(purchaseDateLable,purchaseDate);
         layout.getChildren().addAll(priceLable,price);
-        layout.getChildren().addAll(vendorLable,vendor);
-        layout.getChildren().addAll(submitButton);
+        layout.getChildren().addAll(InventoryNoLable,InventoryNo);
+        layout.getChildren().addAll(AddButton);
         layout.getChildren().addAll(status);
-
-        scene=new Scene(layout,300,400);
-        window=new Stage();
-        window.setScene(scene);
-        window.initModality(Modality.APPLICATION_MODAL);
-        window.show();
-
-
     }
 
-    public void addProduct(){
+
+    VBox getLayout() {
+        return layout;
+    }
+
+    private void addProduct(){
         //validate Values
         try {
             ProductInfo p;
@@ -117,16 +113,13 @@ class AddProductInfo {
             Date Date = java.sql.Date.valueOf(localDate);
 
             double Price=Double.parseDouble(this.price.getText());
-            String Vendor=vendor.getText();
+
+            int InventoryNO=Integer.parseInt(this.InventoryNo.getText());
+
+
 
             //create a product object
-            p=new ProductInfo(ID,Name,Quantity,Date,Price,Vendor);
-            DBService dbService=new DBService();
-            dbService.insertNewProductInfo(tableName,p);
-            //throws error if same product given
-            //table.getColumns().addAll(p);
-            table.refresh();
-
+            //p=new ProductInfo(ID,Name,Quantity,Date,Price,InventoryNO);
 
         }catch (Exception e){
             status.setText("Invalid Price input");

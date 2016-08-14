@@ -12,25 +12,25 @@ public class ProductInfo
     private int Quantity;
     private Date PurchaseDate;
     private double Price;
-    private String Vendor;
-    private int inventoeryNo;
+    private int inventoryNo;
 
 
-    public ProductInfo(int id, String name, int quantity, Date purchaseDate, double price, String vendor) {
+    public ProductInfo(int id, String name, int quantity, Date purchaseDate, double price,int InventoryNo) {
         Id = id;
         Name = name;
         Quantity = quantity;
         PurchaseDate = purchaseDate;
         Price = price;
-        Vendor = vendor;
+
+        inventoryNo=InventoryNo;
     }
 
-    public int getInventoeryNo() {
-        return inventoeryNo;
+    public int getInventoryNo() {
+        return inventoryNo;
     }
 
-    public void setInventoeryNo(int inventoeryNo) {
-        this.inventoeryNo = inventoeryNo;
+    public void setInventoryNo(int inventoryNo) {
+        this.inventoryNo = inventoryNo;
     }
 
     public Product getProduct() {
@@ -81,11 +81,4 @@ public class ProductInfo
         Price = price;
     }
 
-    public String getVendor() {
-        return Vendor;
-    }
-
-    public void setVendor(String vendor) {
-        Vendor = vendor;
-    }
 }
