@@ -11,11 +11,11 @@ import java.util.List;
 
 
 public class DBService {
-    private DBcon dbCon ;
+    private Dbcon dbCon ;
 
 
     public DBService(){
-        dbCon = new DBcon();
+        dbCon = new Dbcon();
 
     }
 

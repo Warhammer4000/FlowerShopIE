@@ -3,12 +3,12 @@ package root.Database;
 import java.sql.*;
 
 
-class DBcon {
+class Dbcon {
     private Connection con;
     private  Statement stmt;
     private  ResultSet result;
     private boolean connectionCheck=true;
-    DBcon() {
+    Dbcon() {
         try {
             //step1 load the driver class
             Class.forName("oracle.jdbc.driver.OracleDriver");
