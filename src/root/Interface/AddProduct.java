@@ -86,9 +86,9 @@ class AddProduct {
             String Type=this.type.getText();
             String Vendor=this.vendor.getText();
             //create a product object
-            //p=new Product(ID,Name,Type,Vendor);
-            //DBService dbService=new DBService();
-            //dbService.insertNewProduct(p);
+            p=new Product(ID,Name,Type,Vendor);
+            DBService dbService=new DBService();
+            dbService.insertNewProduct(p);
             status.setText("Row Inserted");
             status.setTextFill(Color.valueOf("Green"));
 

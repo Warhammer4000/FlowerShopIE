@@ -11,7 +11,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import root.DataClass.Product;
 import root.DataClass.ProductInfo;
+import root.Database.DBService;
 
 import java.util.Date;
 import java.util.List;
@@ -45,7 +47,7 @@ class InventoryView {
         //center
         table=new TableView();
         setTable();
-        //updateTableData(data);
+        updateTableData();
         layout.setCenter(table);
 
 
@@ -107,14 +109,11 @@ class InventoryView {
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("purchaseDate"));
         dateColumn.setStyle("-fx-alignment:CENTER;");
 
-        //Vendor
-        TableColumn<ProductInfo, String> vendorColumn = new TableColumn<>("Vendor");
-        vendorColumn.setCellValueFactory(new PropertyValueFactory<>("vendor"));
-        vendorColumn.setStyle("-fx-alignment:CENTER;");
+
 
         //InventoryId
         TableColumn<ProductInfo, Integer> InventoryidColumn = new TableColumn<>("Inventory No");
-        InventoryidColumn.setCellValueFactory(new PropertyValueFactory<>("inventoeryNo"));
+        InventoryidColumn.setCellValueFactory(new PropertyValueFactory<>("inventoryNo"));
         InventoryidColumn.setStyle("-fx-alignment:CENTER;");
 
 
@@ -124,7 +123,6 @@ class InventoryView {
         table.getColumns().add(priceColumn);
         table.getColumns().add(quantityColumn);
         table.getColumns().add(dateColumn);
-        table.getColumns().add(vendorColumn);
         table.getColumns().add(InventoryidColumn);
 
     }
@@ -135,7 +133,10 @@ class InventoryView {
 
 
 
-    public void updateTableData(List<ProductInfo> data){
+    public void updateTableData(){
+        DBService dbService=new DBService();
+        List <ProductInfo>data;
+        data=dbService.getInvetoryData();
         try {
             for (ProductInfo p : data) {
 

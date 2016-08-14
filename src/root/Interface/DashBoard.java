@@ -58,22 +58,7 @@ class DashBoard {
         accountMenu.getItems().add(logout);
         menuBar.getMenus().addAll(accountMenu);
 
-        //productMenu
-        Menu productMenu= new Menu();
-        productMenu.setText("Product");
 
-        MenuItem addNewProduct= new MenuItem("Add");
-        //addNewProduct.setOnAction(event -> new AddProduct("Product"));
-        productMenu.getItems().add(addNewProduct);
-
-        MenuItem viewProduct= new MenuItem("View");
-        viewProduct.setOnAction(event -> {
-            //shows a list of unique products
-            new productView();
-        });
-        productMenu.getItems().add(viewProduct);
-
-        menuBar.getMenus().addAll(productMenu);
 
 
     }

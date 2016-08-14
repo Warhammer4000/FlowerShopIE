@@ -47,8 +47,9 @@ public class DBService {
 
     //Product
     public boolean insertNewProduct(Product p){
-        String query="INSERT  INTO PRODUCT VALUES ("+p.getId()+",'"+p.getName()+"')";
+        String query="INSERT  INTO PRODUCT VALUES ("+p.getId()+",'"+p.getName()+"',"+"'"+p.getType()+"','"+p.getVendor()+"')";
         try{
+            System.out.print(query);
             dbCon.selectQuery(query);
         }
         catch (Exception e){
@@ -76,8 +77,9 @@ public class DBService {
 
 
     //productInfo
-    public boolean insertNewProductInfo(String tableName, ProductInfo p){
-        String query="INSERT  INTO "+tableName+" VALUES ("+p.getId()+",'"+p.getName()+"',"+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+"')";
+    public boolean insertNewProductInfo(ProductInfo p){
+        String query="INSERT  INTO Inventory VALUES ("+p.getId()+",'"+p.getName()+"',"+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+","+p.getInventoryNo()+")";
+        System.out.print(query);
         try{
             dbCon.selectQuery(query);
         }
@@ -88,9 +90,9 @@ public class DBService {
         return true;
     }
 
-    public List<ProductInfo> getTableData(String tableName){
+    public List<ProductInfo> getInvetoryData(){
         List<ProductInfo> productInfoList =new ArrayList<>();
-        String query="SELECT ID,Name,Quantity,PurchaseDate,Price,InventoryNo FROM Inventory";
+        String query="SELECT ID,Name,Quantity,PurchaseDate,Price,INVENTORYNO FROM Inventory";
         try {
             ResultSet rs = dbCon.selectQuery(query);
             while (rs.next()) {

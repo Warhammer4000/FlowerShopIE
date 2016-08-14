@@ -28,6 +28,7 @@ class productView {
 
     private Button removeButton;
     private Button editButton;
+    private Button refreshButton;
 
 
     private Label status;
@@ -48,7 +49,7 @@ class productView {
         //center
         table=new TableView();
         setTable();
-        //updateTableData();
+        updateTableData();
         layout.setCenter(table);
 
 
@@ -78,8 +79,14 @@ class productView {
             //DeleteButtonPress();
         });
 
+        refreshButton=new Button("Refresh");
+        refreshButton.setOnAction(event -> {
+
+            updateTableData();
+        });
+
         leftContainer.setAlignment(Pos.CENTER);
-        leftContainer.getChildren().addAll(editButton,removeButton);
+        leftContainer.getChildren().addAll(editButton,removeButton,refreshButton);
         layout.setLeft(leftContainer);
 
         //bottom
@@ -110,12 +117,24 @@ class productView {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
         nameColumn.setStyle("-fx-alignment:CENTER;");
 
+        //Type
+        TableColumn<Product, String> typeColumn = new TableColumn<>("Type");
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+        typeColumn.setStyle("-fx-alignment:CENTER;");
+
+        //Vendor
+        TableColumn<Product, String> vendorColumn = new TableColumn<>("Vendor");
+        vendorColumn.setCellValueFactory(new PropertyValueFactory<>("vendor"));
+        vendorColumn.setStyle("-fx-alignment:CENTER;");
+
 
 
 
         //addColumns on table
         table.getColumns().add(idColumn);
         table.getColumns().add(nameColumn);
+        table.getColumns().add(typeColumn);
+        table.getColumns().add(vendorColumn);
 
     }
 

@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c2b1c59-196f-4353-8562-ed0efc195e8f" name="Default" comment="UI updated">
+    <list default="true" id="2c2b1c59-196f-4353-8562-ed0efc195e8f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/DataClass/ProductInfo.java" afterPath="$PROJECT_DIR$/src/root/DataClass/ProductInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Database/DBService.java" afterPath="$PROJECT_DIR$/src/root/Database/DBService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/AddProduct.java" afterPath="$PROJECT_DIR$/src/root/Interface/AddProduct.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/AddProductInfo.java" afterPath="$PROJECT_DIR$/src/root/Interface/AddProductInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/DashBoard.java" afterPath="$PROJECT_DIR$/src/root/Interface/DashBoard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/EditProductInfo.java" afterPath="$PROJECT_DIR$/src/root/Interface/EditProductInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/InventoryView.java" afterPath="$PROJECT_DIR$/src/root/Interface/InventoryView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/root/Interface/productListView.java" afterPath="$PROJECT_DIR$/src/root/Interface/productView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/productView.java" afterPath="$PROJECT_DIR$/src/root/Interface/productView.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -43,38 +41,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AddProductInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/root/Interface/AddProductInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
-              <caret line="121" column="14" selection-start-line="121" selection-start-column="14" selection-end-line="121" selection-end-column="14" />
-              <folding>
-                <element signature="e#2602#2603#0" expanded="true" />
-                <element signature="e#2631#2632#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DashBoard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/root/Interface/DashBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="206" column="4" selection-start-line="206" selection-start-column="4" selection-end-line="206" selection-end-column="4" />
+            <state relative-caret-position="323">
+              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddProduct.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/root/Interface/AddProduct.java">
+      <file leaf-file-name="InventoryView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/root/Interface/InventoryView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="88" column="14" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
+            <state relative-caret-position="136">
+              <caret line="115" column="85" selection-start-line="115" selection-start-column="85" selection-end-line="115" selection-end-column="85" />
               <folding>
-                <element signature="e#625#626#0" expanded="true" />
-                <element signature="e#654#655#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DBService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/root/Database/DBService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="98" column="43" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,46 +76,9 @@
       <file leaf-file-name="productView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/root/Interface/productView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
-              <folding>
-                <element signature="e#2082#2083#0" expanded="true" />
-                <element signature="e#2111#2112#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Login.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/root/Interface/Login.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state relative-caret-position="-323">
+              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditProductInfo.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/root/Interface/EditProductInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="110" column="12" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InventoryView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/root/Interface/InventoryView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="152" column="26" selection-start-line="152" selection-start-column="26" selection-end-line="152" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1877#1878#0" expanded="true" />
-                <element signature="e#1911#1912#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -157,13 +114,13 @@
         <option value="$PROJECT_DIR$/src/root/Interface/EditProduct.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/productListView.java" />
         <option value="$PROJECT_DIR$/src/root/DataClass/ProductInfo.java" />
-        <option value="$PROJECT_DIR$/src/root/Database/DBService.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/EditProductInfo.java" />
-        <option value="$PROJECT_DIR$/src/root/Interface/InventoryView.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/DashBoard.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/AddProduct.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/productView.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/AddProductInfo.java" />
+        <option value="$PROJECT_DIR$/src/root/Database/DBService.java" />
+        <option value="$PROJECT_DIR$/src/root/Interface/InventoryView.java" />
       </list>
     </option>
   </component>
@@ -812,7 +769,7 @@
       <workItem from="1469283953554" duration="350000" />
       <workItem from="1469368029260" duration="40000" />
       <workItem from="1471062381452" duration="317000" />
-      <workItem from="1471181750945" duration="3752000" />
+      <workItem from="1471181750945" duration="6148000" />
     </task>
     <task id="LOCAL-00001" summary="ReOrganized DashBoard">
       <created>1469108037775</created>
@@ -856,11 +813,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469284289663</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="UI updated">
+      <created>1471185544350</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1471185544350</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26941000" />
+    <option name="totallyTimeSpent" value="29337000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -873,15 +837,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.50303954" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.506079" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.4969605" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32569557" sideWeight="0.49392098" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29103345" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -943,8 +907,6 @@
           <caret line="174" column="14" selection-start-line="174" selection-start-column="14" selection-end-line="174" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1877#1878#0" expanded="true" />
-            <element signature="e#1911#1912#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -961,10 +923,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#625#626#0" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1026,8 +985,6 @@
           <caret line="174" column="14" selection-start-line="174" selection-start-column="14" selection-end-line="174" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1877#1878#0" expanded="true" />
-            <element signature="e#1911#1912#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1044,10 +1001,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#625#626#0" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1109,8 +1063,6 @@
           <caret line="164" column="34" selection-start-line="164" selection-start-column="34" selection-end-line="164" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1877#1878#0" expanded="true" />
-            <element signature="e#1911#1912#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1152,8 +1104,6 @@
           <caret line="164" column="34" selection-start-line="164" selection-start-column="34" selection-end-line="164" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1877#1878#0" expanded="true" />
-            <element signature="e#1911#1912#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1195,8 +1145,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1877#1878#0" expanded="true" />
-            <element signature="e#1911#1912#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1270,10 +1218,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/Database/DBService.java">
+    <entry file="file://$PROJECT_DIR$/src/root/Interface/Login.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="79" column="149" selection-start-line="79" selection-start-column="149" selection-end-line="79" selection-end-column="149" />
+        <state relative-caret-position="128">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/root/Interface/EditProductInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="110" column="12" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -1286,6 +1242,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/root/Interface/AddProduct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/root/Database/DBcon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1294,72 +1258,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/Interface/Login.java">
+    <entry file="file://$PROJECT_DIR$/src/root/Interface/AddProductInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="680">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/root/Interface/DashBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/root/Interface/productView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-323">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/root/Database/DBService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="98" column="43" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/root/Interface/InventoryView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="152" column="26" selection-start-line="152" selection-start-column="26" selection-end-line="152" selection-end-column="26" />
+        <state relative-caret-position="136">
+          <caret line="115" column="85" selection-start-line="115" selection-start-column="85" selection-end-line="115" selection-end-column="85" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1877#1878#0" expanded="true" />
-            <element signature="e#1911#1912#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/Interface/DashBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="206" column="4" selection-start-line="206" selection-start-column="4" selection-end-line="206" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/Interface/AddProduct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="88" column="14" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
-          <folding>
-            <element signature="e#625#626#0" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/Interface/productView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
-          <folding>
-            <element signature="e#2082#2083#0" expanded="true" />
-            <element signature="e#2111#2112#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/Interface/AddProductInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="121" column="14" selection-start-line="121" selection-start-column="14" selection-end-line="121" selection-end-column="14" />
-          <folding>
-            <element signature="e#2602#2603#0" expanded="true" />
-            <element signature="e#2631#2632#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/Interface/EditProductInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="110" column="12" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>

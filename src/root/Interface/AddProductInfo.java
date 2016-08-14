@@ -119,7 +119,9 @@ class AddProductInfo {
 
 
             //create a product object
-            //p=new ProductInfo(ID,Name,Quantity,Date,Price,InventoryNO);
+            p=new ProductInfo(ID,Name,Quantity,Date,Price,InventoryNO);
+            DBService dbService=new DBService();
+            dbService.insertNewProductInfo(p);
 
         }catch (Exception e){
             status.setText("Invalid Price input");
