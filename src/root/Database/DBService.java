@@ -129,7 +129,7 @@ public class DBService {
             dbCon.inUpdateDelete(query);
         }
         catch (Exception e){
-            e.printStackTrace();
+
             return false;
         }
         return true;

@@ -114,13 +114,18 @@ class UpdateProduct {
             //create a product object
             p=new Product(ID,Name,Type,Vendor);
             DBService dbService=new DBService();
-            dbService.insertNewProduct(p);
+            if(dbService.insertNewProduct(p)){
+                //show status ToolTip
+                status.setText("Row Inserted");
+                status.setTextFill(Color.valueOf("Green"));
+                //update Table
+                productView.updateTableData();
+            }else {
+                status.setText("Invalid Input");
+                status.setTextFill(Color.valueOf("Red"));
+            }
 
-            //show status ToolTip
-            status.setText("Row Inserted");
-            status.setTextFill(Color.valueOf("Green"));
-            //update Table
-            productView.updateTableData();
+
 
         }catch (Exception e){
             status.setText("Invalid Input");

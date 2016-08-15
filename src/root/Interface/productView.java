@@ -132,6 +132,8 @@ class productView {
     static void updateTableData(){
         //get data fromDatabase
         table.getItems().clear();
+        InventoryView.updateTableData();
+        UpdateProductInfo.UpdateProductPicker();
         List<Product> data=new DBService().getProducts();
         try {
             for (Product p : data) {

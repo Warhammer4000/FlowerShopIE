@@ -21,8 +21,8 @@ import java.util.List;
 
 
 class UpdateProductInfo {
-    private List<Product> availableProducts;
-    private AutoCompleteComboBox<Product> productPicker=new AutoCompleteComboBox<>();
+
+    private static AutoCompleteComboBox<Product> productPicker;
     private ProductInfo SelectedProduct;
 
     private Label productLable;
@@ -48,47 +48,13 @@ class UpdateProductInfo {
 
     private VBox layout;
 
-    void setProduct(int id){
-        ObservableList<Product> observableList=productPicker.getItems();
-        Product product=null;
-        for(Product p : observableList){
-            if(p.getId()==id){
-                product=p;
-                break;
-            }
-        }
 
-        productPicker.setValue(product);
-
-    }
-    void setQuantity(int quantity) {
-        this.quantity.setText(String.valueOf(quantity));
-    }
-
-    void setPurchaseDate(Date purchaseDate) {
-        LocalDate localDate = LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(purchaseDate) );
-        this.purchaseDate.setValue(localDate);
-    }
-
-    void setSelectedProduct(ProductInfo selectedProduct) {
-        this.SelectedProduct = selectedProduct;
-    }
-
-    void setPrice(Double price) {
-        this.price.setText(String.valueOf(price));
-    }
-
-    void setInventoryNo(int inventoryNo) {
-        InventoryNo.setText(String.valueOf(inventoryNo));
-    }
 
     UpdateProductInfo(){
 
         productLable=new Label("Product");
-        availableProducts=new DBService().getProducts();
-        for(Product p : availableProducts){
-            productPicker.getItems().addAll(p);
-        }
+        productPicker=new AutoCompleteComboBox<>();
+        UpdateProductPicker();
         productPicker.setEditable(true);
 
         quantityLable=new Label("Quantity");
@@ -125,6 +91,8 @@ class UpdateProductInfo {
         EditButton=new Button("Edit");
         EditButton.setOnAction(event -> EditProductInfo());
 
+
+
         status = new Label("");
 
         layout=new VBox(2);
@@ -140,10 +108,51 @@ class UpdateProductInfo {
     }
 
 
+    void setProduct(int id){
+        ObservableList<Product> observableList=productPicker.getItems();
+        Product product=null;
+        for(Product p : observableList){
+            if(p.getId()==id){
+                product=p;
+                break;
+            }
+        }
+
+        productPicker.setValue(product);
+
+    }
+    void setQuantity(int quantity) {
+        this.quantity.setText(String.valueOf(quantity));
+    }
+
+    void setPurchaseDate(Date purchaseDate) {
+        LocalDate localDate = LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(purchaseDate) );
+        this.purchaseDate.setValue(localDate);
+    }
+
+    void setSelectedProduct(ProductInfo selectedProduct) {
+        this.SelectedProduct = selectedProduct;
+    }
+
+    void setPrice(Double price) {
+        this.price.setText(String.valueOf(price));
+    }
+
+    void setInventoryNo(int inventoryNo) {
+        InventoryNo.setText(String.valueOf(inventoryNo));
+    }
+
     VBox getLayout() {
         return layout;
     }
+    public static void  UpdateProductPicker(){
+        productPicker.getItems().clear();
+        List<Product> availableProducts=new DBService().getProducts();
+        for(Product p : availableProducts){
+            productPicker.getItems().addAll(p);
+        }
 
+    }
     private void addProduct(){
         //validate Values
         try {

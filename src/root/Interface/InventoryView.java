@@ -20,7 +20,7 @@ class InventoryView {
     private UpdateProductInfo UpdateProductInfo;
 
 
-    private Button refreshButton;
+
 
 
     private Label status;
@@ -50,9 +50,6 @@ class InventoryView {
         leftContainer.setAlignment(Pos.CENTER);
         layout.setLeft(leftContainer);
 
-        refreshButton=new Button("Refresh");
-        refreshButton.setOnAction(event -> updateTableData());
-        leftContainer.getChildren().addAll(refreshButton);
 
 
         //Right
@@ -156,12 +153,7 @@ class InventoryView {
             e.printStackTrace();
         }
     }
-    public  void DeleteButtonPress(){
-        //// TODO Delete item from DB 
 
-
-
-    }
 
 
 
