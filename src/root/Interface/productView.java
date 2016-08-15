@@ -4,7 +4,6 @@ package root.Interface;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,13 +22,9 @@ import java.util.List;
 class productView {
     private BorderPane layout;
 
-    private static TableView table;
+    public static TableView table;
 
-    private Button removeButton;
-    private Button editButton;
-    private Button refreshButton;
-
-
+    private UpdateProduct updateProduct;
     private Label status;
 
     productView(){
@@ -55,8 +50,8 @@ class productView {
         //Right
         VBox rightContainer=new VBox(10);
         rightContainer.setAlignment(Pos.CENTER);
-        AddProduct ap=new AddProduct();
-        rightContainer.getChildren().addAll(ap.getLayout());
+        updateProduct=new UpdateProduct();
+        rightContainer.getChildren().addAll(updateProduct.getLayout());
         layout.setRight(rightContainer);
 
 
@@ -68,24 +63,7 @@ class productView {
         //Left
 
         VBox leftContainer=new VBox(10);
-        editButton=new Button("Edit");
-        editButton.setOnAction(event -> {
-            //EditButtonPress();
-        });
-
-        removeButton=new Button("Remove");
-        removeButton.setOnAction(event -> {
-            //DeleteButtonPress();
-        });
-
-        refreshButton=new Button("Refresh");
-        refreshButton.setOnAction(event -> {
-            table.getItems().clear();
-            updateTableData();
-        });
-
         leftContainer.setAlignment(Pos.CENTER);
-        leftContainer.getChildren().addAll(editButton,removeButton,refreshButton);
         layout.setLeft(leftContainer);
 
         //bottom
@@ -126,7 +104,15 @@ class productView {
         vendorColumn.setCellValueFactory(new PropertyValueFactory<>("vendor"));
         vendorColumn.setStyle("-fx-alignment:CENTER;");
 
+        table.setOnMouseClicked(event -> {
+            Product p=(Product)table.getSelectionModel().getSelectedItem();
+            updateProduct.setId(p.getId());
+            updateProduct.setName(p.getName());
+            updateProduct.setType(p.getType());
+            updateProduct.setVendor(p.getVendor());
 
+
+        });
 
 
         //addColumns on table
@@ -177,20 +163,7 @@ class productView {
 
     }
 
-    public  void EditButtonPress(){
-        ObservableList<Product> productSelected;
-        productSelected = table.getSelectionModel().getSelectedItems();
 
-        if (!table.getSelectionModel().isEmpty()) {
-            new EditProduct("PRODUCT",table,productSelected.get(0));
-        }
-        else {
-            status.setText("No Row Selected");
-            status.setTextFill(Color.web("Blue"));
-        }
-
-
-    }
 
 
 

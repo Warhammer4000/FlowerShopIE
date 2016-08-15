@@ -2,19 +2,19 @@ package root.Interface;
 
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import root.DataClass.Product;
 import root.DataClass.ProductInfo;
 import root.Database.DBService;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +22,7 @@ class InventoryView {
     private BorderPane layout;
 
     private static TableView table;
-
+    private UpdateProductInfo UpdateProductInfo;
 
 
     private Button removeButton;
@@ -72,8 +72,8 @@ class InventoryView {
         //Right
         VBox rightContainer=new VBox(10);
         rightContainer.setAlignment(Pos.CENTER);
-        AddProductInfo ap=new AddProductInfo();
-        rightContainer.getChildren().addAll(ap.getLayout());
+        UpdateProductInfo=new UpdateProductInfo();
+        rightContainer.getChildren().addAll(UpdateProductInfo.getLayout());
         layout.setRight(rightContainer);
 
         //bottom
@@ -121,6 +121,16 @@ class InventoryView {
         InventoryidColumn.setCellValueFactory(new PropertyValueFactory<>("inventoryNo"));
         InventoryidColumn.setStyle("-fx-alignment:CENTER;");
 
+        table.setOnMouseClicked(event -> {
+            ProductInfo p = (ProductInfo) table.getSelectionModel().getSelectedItem();
+
+            UpdateProductInfo.setQuantity(p.getQuantity());
+            UpdateProductInfo.setInventoryNo(p.getInventoryNo());
+            UpdateProductInfo.setPrice(p.getPrice());
+            UpdateProductInfo.setPurchaseDate(p.getPurchaseDate());
+            UpdateProductInfo.setProduct(p.getId());
+
+        });
 
         //addColumns on table
 

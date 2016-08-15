@@ -1,5 +1,6 @@
 package root.Interface;
 
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -9,7 +10,7 @@ import root.DataClass.Product;
 import root.Database.DBService;
 
 
-class AddProduct {
+class UpdateProduct {
     private Label idLable;
     private NumericTextField id;
 
@@ -25,6 +26,7 @@ class AddProduct {
 
 
     private  Button AddButton;
+    private Button EditButton;
     private  Label status;
 
     private VBox layout;
@@ -33,7 +35,23 @@ class AddProduct {
         return layout;
     }
 
-    AddProduct(){
+    public void setId(int id) {
+        this.id.setText(String.valueOf(id));
+    }
+
+    public void setName(String name) {
+        this.name.setText(name);
+    }
+
+    public void setType(String type) {
+        this.type.setText(type);
+    }
+
+    public void setVendor(String vendor) {
+        this.vendor.setText(vendor);
+    }
+
+    UpdateProduct(){
         idLable=new Label("Product ID");
         id=new NumericTextField();
         id.setPromptText("Ex.1(number)");
@@ -58,6 +76,10 @@ class AddProduct {
 
         AddButton =new Button("+Add");
         AddButton.setOnAction(event -> addProduct());
+
+        EditButton=new Button("Edit");
+        EditButton.setOnAction(event -> EditButtonPress());
+
         status = new Label("");
 
         layout=new VBox(2);
@@ -67,7 +89,7 @@ class AddProduct {
         layout.getChildren().addAll(typeLable,type);
         layout.getChildren().addAll(VendorLable,vendor);
 
-        layout.getChildren().addAll(AddButton);
+        layout.getChildren().addAll(AddButton,EditButton);
         layout.getChildren().addAll(status);
 
 
@@ -97,6 +119,14 @@ class AddProduct {
             status.setText("Invalid Input");
             status.setTextFill(Color.valueOf("Red"));
         }
+
+
+
+    }
+
+    public  void EditButtonPress(){
+        //update Database
+
 
 
 

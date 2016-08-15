@@ -1,5 +1,6 @@
 package root.Interface;
 
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,12 +17,15 @@ import root.DataClass.Product;
 import root.DataClass.ProductInfo;
 import root.Database.DBService;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
 
-class AddProductInfo {
+class UpdateProductInfo {
     private List<Product> availableProducts;
     private AutoCompleteComboBox<Product> productPicker=new AutoCompleteComboBox<>();
 
@@ -46,7 +50,37 @@ class AddProductInfo {
 
     private VBox layout;
 
-    AddProductInfo(){
+    public void setProduct(int id){
+        ObservableList<Product> observableList=productPicker.getItems();
+        Product product=null;
+        for(Product p : observableList){
+            if(p.getId()==id){
+                product=p;
+                break;
+            }
+        }
+
+        productPicker.setValue(product);
+
+    }
+    public void setQuantity(int quantity) {
+        this.quantity.setText(String.valueOf(quantity));
+    }
+
+    public void setPurchaseDate(Date purchaseDate) {
+        LocalDate localDate = LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(purchaseDate) );
+        this.purchaseDate.setValue(localDate);
+    }
+
+    public void setPrice(Double price) {
+        this.price.setText(String.valueOf(price));
+    }
+
+    public void setInventoryNo(int inventoryNo) {
+        InventoryNo.setText(String.valueOf(inventoryNo));
+    }
+
+    UpdateProductInfo(){
 
         productLable=new Label("Product");
         availableProducts=new DBService().getProducts();
@@ -120,6 +154,7 @@ class AddProductInfo {
 
             //create a product object
             p=new ProductInfo(ID,Name,Quantity,Date,Price,InventoryNO);
+
             DBService dbService=new DBService();
             dbService.insertNewProductInfo(p);
             InventoryView.updateTableData();
