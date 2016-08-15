@@ -23,7 +23,7 @@ import java.util.List;
 class productView {
     private BorderPane layout;
 
-    private TableView table;
+    private static TableView table;
 
     private Button removeButton;
     private Button editButton;
@@ -143,7 +143,7 @@ class productView {
 
 
 
-    public void updateTableData(){
+    public static void updateTableData(){
         //get data fromDatabase
         table.getItems().clear();
         List<Product> data=new DBService().getProducts();

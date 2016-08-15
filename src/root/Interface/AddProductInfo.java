@@ -105,7 +105,7 @@ class AddProductInfo {
         //validate Values
         try {
             ProductInfo p;
-            int ID=Integer.parseInt(String.valueOf(productPicker.getValue().getId()));
+            int ID=productPicker.getValue().getId();
             String Name=productPicker.getValue().getName();
             int Quantity=Integer.parseInt(quantity.getText());
             //date
@@ -122,6 +122,7 @@ class AddProductInfo {
             p=new ProductInfo(ID,Name,Quantity,Date,Price,InventoryNO);
             DBService dbService=new DBService();
             dbService.insertNewProductInfo(p);
+            InventoryView.updateTableData();
 
         }catch (Exception e){
             e.printStackTrace();

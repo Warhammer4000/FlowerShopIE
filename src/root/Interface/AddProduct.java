@@ -91,6 +91,7 @@ class AddProduct {
             dbService.insertNewProduct(p);
             status.setText("Row Inserted");
             status.setTextFill(Color.valueOf("Green"));
+            productView.updateTableData();
 
         }catch (Exception e){
             status.setText("Invalid Input");

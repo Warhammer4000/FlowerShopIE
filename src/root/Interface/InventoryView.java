@@ -21,7 +21,7 @@ import java.util.List;
 class InventoryView {
     private BorderPane layout;
 
-    private TableView table;
+    private static TableView table;
 
 
 
@@ -138,7 +138,7 @@ class InventoryView {
 
 
 
-    public void updateTableData(){
+    public static void updateTableData(){
         table.getItems().clear();
         DBService dbService=new DBService();
         List <ProductInfo>data;
