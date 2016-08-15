@@ -27,6 +27,7 @@ class InventoryView {
 
     private Button removeButton;
     private Button editButton;
+    private Button refreshButton;
 
 
     private Label status;
@@ -61,7 +62,11 @@ class InventoryView {
         removeButton.setOnAction(event -> {
            // DeleteButtonPress();
         });
-        leftContainer.getChildren().addAll(editButton,removeButton);
+        refreshButton=new Button("Refresh");
+        refreshButton.setOnAction(event -> {
+            updateTableData();
+        });
+        leftContainer.getChildren().addAll(editButton,removeButton,refreshButton);
 
 
         //Right
@@ -134,6 +139,7 @@ class InventoryView {
 
 
     public void updateTableData(){
+        table.getItems().clear();
         DBService dbService=new DBService();
         List <ProductInfo>data;
         data=dbService.getInvetoryData();

@@ -145,6 +145,7 @@ class productView {
 
     public void updateTableData(){
         //get data fromDatabase
+        table.getItems().clear();
         List<Product> data=new DBService().getProducts();
         try {
             for (Product p : data) {

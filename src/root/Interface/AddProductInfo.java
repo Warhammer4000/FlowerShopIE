@@ -124,6 +124,7 @@ class AddProductInfo {
             dbService.insertNewProductInfo(p);
 
         }catch (Exception e){
+            e.printStackTrace();
             status.setText("Invalid Price input");
             status.setTextFill(Color.valueOf("Red"));
         }catch (Error e){
