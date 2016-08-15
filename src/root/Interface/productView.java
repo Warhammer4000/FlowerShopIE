@@ -106,10 +106,13 @@ class productView {
 
         table.setOnMouseClicked(event -> {
             Product p=(Product)table.getSelectionModel().getSelectedItem();
-            updateProduct.setId(p.getId());
-            updateProduct.setName(p.getName());
-            updateProduct.setType(p.getType());
-            updateProduct.setVendor(p.getVendor());
+            if(p!=null){
+                updateProduct.setId(p.getId());
+                updateProduct.setName(p.getName());
+                updateProduct.setType(p.getType());
+                updateProduct.setVendor(p.getVendor());
+            }
+
 
 
         });

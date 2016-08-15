@@ -2,9 +2,7 @@ package root.CustomControl;
 
 import javafx.scene.control.TextField;
 
-/**
- * Created by tazim on 7/21/2016.
- */
+
 
 public class NumericTextField extends TextField
 {

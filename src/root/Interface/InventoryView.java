@@ -106,13 +106,15 @@ class InventoryView {
 
         table.setOnMouseClicked(event -> {
             ProductInfo p = (ProductInfo) table.getSelectionModel().getSelectedItem();
+            if(p!=null){
+                UpdateProductInfo.setQuantity(p.getQuantity());
+                UpdateProductInfo.setInventoryNo(p.getInventoryNo());
+                UpdateProductInfo.setPrice(p.getPrice());
+                UpdateProductInfo.setPurchaseDate(p.getPurchaseDate());
+                UpdateProductInfo.setProduct(p.getId());
+                UpdateProductInfo.setSelectedProduct(p);
+            }
 
-            UpdateProductInfo.setQuantity(p.getQuantity());
-            UpdateProductInfo.setInventoryNo(p.getInventoryNo());
-            UpdateProductInfo.setPrice(p.getPrice());
-            UpdateProductInfo.setPurchaseDate(p.getPurchaseDate());
-            UpdateProductInfo.setProduct(p.getId());
-            UpdateProductInfo.setSelectedProduct(p);
 
         });
 
