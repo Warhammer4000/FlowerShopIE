@@ -8,21 +8,28 @@ public class ProductInfo
 {
     private Product product;
     private int Id;
-    private String Name;
+    private String name;
     private int Quantity;
     private Date PurchaseDate;
     private double Price;
     private int inventoryNo;
 
 
-    public ProductInfo(int id, String name, int quantity, Date purchaseDate, double price,int InventoryNo) {
+    public ProductInfo(int id, int quantity, Date purchaseDate, double price,int InventoryNo) {
         Id = id;
-        Name = name;
         Quantity = quantity;
         PurchaseDate = purchaseDate;
         Price = price;
 
         inventoryNo=InventoryNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getInventoryNo() {
@@ -47,14 +54,6 @@ public class ProductInfo
 
     public void setId(int id) {
         Id = id;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
     }
 
     public int getQuantity() {

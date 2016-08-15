@@ -22,7 +22,7 @@ import java.util.List;
 class productView {
     private BorderPane layout;
 
-    public static TableView table;
+    private static TableView table;
 
     private UpdateProduct updateProduct;
     private Label status;
@@ -129,7 +129,7 @@ class productView {
 
 
 
-    public static void updateTableData(){
+    static void updateTableData(){
         //get data fromDatabase
         table.getItems().clear();
         List<Product> data=new DBService().getProducts();
@@ -144,24 +144,7 @@ class productView {
             e.printStackTrace();
         }
     }
-    public  void DeleteButtonPress(){
-        ObservableList<Product> productSelected , allProducts;
-        productSelected = table.getSelectionModel().getSelectedItems();
-        allProducts = table.getItems();
 
-        if (!table.getSelectionModel().isEmpty()) {
-            productSelected.forEach(allProducts::remove);
-            status.setText("Row Deleted");
-            status.setTextFill(Color.web("Red"));
-
-        }
-        else {
-            status.setText("No Rows Selected");
-            status.setTextFill(Color.web("Blue"));
-        }
-
-
-    }
 
 
 

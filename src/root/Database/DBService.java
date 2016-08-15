@@ -78,8 +78,8 @@ public class DBService {
 
     //productInfo
     public boolean insertNewProductInfo(ProductInfo p){
-        String query="INSERT  INTO Inventory VALUES ("+p.getId()+",'"+p.getName()+"',"+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+","+p.getInventoryNo()+")";
-        System.out.print(query);
+        String query="INSERT  INTO Inventory VALUES ("+p.getId()+","+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+","+p.getInventoryNo()+")";
+        System.out.println(query);
         try{
             dbCon.selectQuery(query);
         }
@@ -92,12 +92,12 @@ public class DBService {
 
     public List<ProductInfo> getInvetoryData(){
         List<ProductInfo> productInfoList =new ArrayList<>();
-        String query="SELECT ID,Name,Quantity,PurchaseDate,Price,INVENTORYNO FROM Inventory";
+        String query="SELECT ID,Quantity,PurchaseDate,Price,INVENTORYNO FROM Inventory";
         try {
             ResultSet rs = dbCon.selectQuery(query);
             while (rs.next()) {
                 //rs.bla bla create product
-                productInfoList.add(new ProductInfo(rs.getInt("ID"),rs.getString("Name"),rs.getInt("Quantity"),rs.getDate("PurchaseDate"),rs.getDouble("Price"),rs.getInt("InventoryNo")));
+                productInfoList.add(new ProductInfo(rs.getInt("ID"),rs.getInt("Quantity"),rs.getDate("PurchaseDate"),rs.getDouble("Price"),rs.getInt("InventoryNo")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -105,4 +105,84 @@ public class DBService {
 
         return productInfoList;
     }
+
+    public boolean deleteProduct(int id) {
+
+        String query="DELETE FROM PRODUCT WHERE ID="+id;
+        System.out.println(query);
+        try{
+            dbCon.inUpdateDelete(query);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+
+
+    }
+
+    public boolean EditProduct(Product p) {
+        String query="UPDATE Product" +" SET ID="+p.getId()+",Name='"+p.getName()+"',Type='"+p.getType()+"',Vendor='"+p.getVendor()+"' WHERE ID="+p.getId();
+        System.out.println(query);
+        try{
+            dbCon.inUpdateDelete(query);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+
+    }
+
+    public boolean deleteProductInfo(ProductInfo p) {
+        String query="DELETE FROM INVENTORY " +
+                "WHERE ID="+p.getId()+" " +
+                "and Quantity="+p.getQuantity()+" " +
+                "and PURCHASEDATE='"+p.getPurchaseDate()+"" +
+                "' and PRICE="+p.getPrice()+"" +
+                " and INVENTORYNO="+p.getInventoryNo();
+        System.out.println(query);
+        try{
+            dbCon.inUpdateDelete(query);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+
+
+    }
+
+    public boolean EditProductInfo(ProductInfo p,ProductInfo SelectedProduct) {
+
+        String query="UPDATE  INVENTORY SET " +
+                "ID="+p.getId()+"" +
+                ",Quantity="+p.getQuantity()+"" +
+                ",PURCHASEDATE='"+p.getPurchaseDate()+"" +
+                "',Price="+p.getPrice()+"" +
+                ",INVENTORYNO="+p.getInventoryNo()+
+                " WHERE ID="+SelectedProduct.getId()+" " +
+                "and Quantity="+SelectedProduct.getQuantity()+" " +
+                "and PURCHASEDATE='"+SelectedProduct.getPurchaseDate()+"' " +
+                "and PRICE="+SelectedProduct.getPrice()+" " +
+                "and INVENTORYNO="+SelectedProduct.getInventoryNo();
+        System.out.println(query);
+        try{
+            dbCon.inUpdateDelete(query);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+
+
+    }
+
+
+
+
 }

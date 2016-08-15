@@ -2,13 +2,10 @@ package root.Interface;
 
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 
 import root.CustomControl.AutoCompleteComboBox;
@@ -18,9 +15,7 @@ import root.DataClass.ProductInfo;
 import root.Database.DBService;
 
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +23,7 @@ import java.util.List;
 class UpdateProductInfo {
     private List<Product> availableProducts;
     private AutoCompleteComboBox<Product> productPicker=new AutoCompleteComboBox<>();
+    private ProductInfo SelectedProduct;
 
     private Label productLable;
 
@@ -46,11 +42,13 @@ class UpdateProductInfo {
 
 
     private  Button AddButton;
+    private Button DeleteButton;
+    private Button EditButton;
     private  Label status;
 
     private VBox layout;
 
-    public void setProduct(int id){
+    void setProduct(int id){
         ObservableList<Product> observableList=productPicker.getItems();
         Product product=null;
         for(Product p : observableList){
@@ -63,20 +61,24 @@ class UpdateProductInfo {
         productPicker.setValue(product);
 
     }
-    public void setQuantity(int quantity) {
+    void setQuantity(int quantity) {
         this.quantity.setText(String.valueOf(quantity));
     }
 
-    public void setPurchaseDate(Date purchaseDate) {
+    void setPurchaseDate(Date purchaseDate) {
         LocalDate localDate = LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(purchaseDate) );
         this.purchaseDate.setValue(localDate);
     }
 
-    public void setPrice(Double price) {
+    void setSelectedProduct(ProductInfo selectedProduct) {
+        this.SelectedProduct = selectedProduct;
+    }
+
+    void setPrice(Double price) {
         this.price.setText(String.valueOf(price));
     }
 
-    public void setInventoryNo(int inventoryNo) {
+    void setInventoryNo(int inventoryNo) {
         InventoryNo.setText(String.valueOf(inventoryNo));
     }
 
@@ -116,6 +118,13 @@ class UpdateProductInfo {
 
         AddButton=new Button("+Add");
         AddButton.setOnAction(event -> addProduct());
+
+        DeleteButton=new Button("Delete");
+        DeleteButton.setOnAction(event -> DeleteProductInfo());
+
+        EditButton=new Button("Edit");
+        EditButton.setOnAction(event -> EditProductInfo());
+
         status = new Label("");
 
         layout=new VBox(2);
@@ -126,7 +135,7 @@ class UpdateProductInfo {
         layout.getChildren().addAll(purchaseDateLable,purchaseDate);
         layout.getChildren().addAll(priceLable,price);
         layout.getChildren().addAll(InventoryNoLable,InventoryNo);
-        layout.getChildren().addAll(AddButton);
+        layout.getChildren().addAll(AddButton,EditButton,DeleteButton);
         layout.getChildren().addAll(status);
     }
 
@@ -153,7 +162,7 @@ class UpdateProductInfo {
 
 
             //create a product object
-            p=new ProductInfo(ID,Name,Quantity,Date,Price,InventoryNO);
+            p=new ProductInfo(ID,Quantity,Date,Price,InventoryNO);
 
             DBService dbService=new DBService();
             dbService.insertNewProductInfo(p);
@@ -171,5 +180,109 @@ class UpdateProductInfo {
 
 
     }
+
+    private void EditProductInfo(){
+        ProductInfo p;
+        int ID=productPicker.getValue().getId();
+        String Name=productPicker.getValue().getName();
+        int Quantity=Integer.parseInt(quantity.getText());
+        //date
+        LocalDate localDate = purchaseDate.getValue();
+        Date Date = java.sql.Date.valueOf(localDate);
+
+        double Price=Double.parseDouble(this.price.getText());
+
+        int InventoryNO=Integer.parseInt(this.InventoryNo.getText());
+
+
+
+        //create a product object
+        p=new ProductInfo(ID,Quantity,Date,Price,InventoryNO);
+
+        if (p.getId()>-1) {
+
+            //Delete From DB
+            try{
+                DBService dbService=new DBService();
+                if(dbService.EditProductInfo(p,SelectedProduct)){
+                    status.setText("Row Deleted");
+                    status.setTextFill(Color.web("Green"));
+                }else {
+                    status.setText("Child record Found");
+                    status.setTextFill(Color.web("Red"));
+                }
+
+
+            }catch (Exception e){
+                status.setText("Database Exception call your DbManager");
+                status.setTextFill(Color.web("Red"));
+            }
+
+
+
+        }
+        else {
+            status.setText("No Rows Selected");
+            status.setTextFill(Color.web("Blue"));
+        }
+
+
+
+        //update when done
+        InventoryView.updateTableData();
+    }
+
+
+    private void DeleteProductInfo(){
+        ProductInfo p;
+        int ID=productPicker.getValue().getId();
+        String Name=productPicker.getValue().getName();
+        int Quantity=Integer.parseInt(quantity.getText());
+        //date
+        LocalDate localDate = purchaseDate.getValue();
+        Date Date = java.sql.Date.valueOf(localDate);
+
+        double Price=Double.parseDouble(this.price.getText());
+
+        int InventoryNO=Integer.parseInt(this.InventoryNo.getText());
+
+
+
+        //create a product object
+        p=new ProductInfo(ID,Quantity,Date,Price,InventoryNO);
+
+        if (p.getId()>-1) {
+
+            //Delete From DB
+            try{
+                DBService dbService=new DBService();
+                if(dbService.deleteProductInfo(p)){
+                    status.setText("Row Deleted");
+                    status.setTextFill(Color.web("Green"));
+                }else {
+                    status.setText("Child record Found");
+                    status.setTextFill(Color.web("Red"));
+                }
+
+
+            }catch (Exception e){
+                status.setText("Database Exception call your DbManager");
+                status.setTextFill(Color.web("Red"));
+            }
+
+
+
+        }
+        else {
+            status.setText("No Rows Selected");
+            status.setTextFill(Color.web("Blue"));
+        }
+
+
+
+        //update when done
+        InventoryView.updateTableData();
+    }
+
 
 }

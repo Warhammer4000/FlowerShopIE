@@ -27,6 +27,7 @@ class UpdateProduct {
 
     private  Button AddButton;
     private Button EditButton;
+    private Button DeleteButton;
     private  Label status;
 
     private VBox layout;
@@ -35,7 +36,7 @@ class UpdateProduct {
         return layout;
     }
 
-    public void setId(int id) {
+    void setId(int id) {
         this.id.setText(String.valueOf(id));
     }
 
@@ -43,11 +44,11 @@ class UpdateProduct {
         this.name.setText(name);
     }
 
-    public void setType(String type) {
+    void setType(String type) {
         this.type.setText(type);
     }
 
-    public void setVendor(String vendor) {
+    void setVendor(String vendor) {
         this.vendor.setText(vendor);
     }
 
@@ -80,6 +81,9 @@ class UpdateProduct {
         EditButton=new Button("Edit");
         EditButton.setOnAction(event -> EditButtonPress());
 
+        DeleteButton=new Button("Delete");
+        DeleteButton.setOnAction(event -> DeleteButtonPress());
+
         status = new Label("");
 
         layout=new VBox(2);
@@ -89,7 +93,7 @@ class UpdateProduct {
         layout.getChildren().addAll(typeLable,type);
         layout.getChildren().addAll(VendorLable,vendor);
 
-        layout.getChildren().addAll(AddButton,EditButton);
+        layout.getChildren().addAll(AddButton,EditButton,DeleteButton);
         layout.getChildren().addAll(status);
 
 
@@ -111,8 +115,11 @@ class UpdateProduct {
             p=new Product(ID,Name,Type,Vendor);
             DBService dbService=new DBService();
             dbService.insertNewProduct(p);
+
+            //show status ToolTip
             status.setText("Row Inserted");
             status.setTextFill(Color.valueOf("Green"));
+            //update Table
             productView.updateTableData();
 
         }catch (Exception e){
@@ -124,12 +131,86 @@ class UpdateProduct {
 
     }
 
-    public  void EditButtonPress(){
+    private void EditButtonPress(){
         //update Database
 
+        int ID=Integer.parseInt(id.getText());
+        String Name=this.name.getText();
+        String Type=this.type.getText();
+        String Vendor=this.vendor.getText();
+        //create a product object
+        Product p=new Product(ID,Name,Type,Vendor);
+        if (ID>0) {
+
+            //Update From DB
+            try{
+
+                DBService dbService=new DBService();
+                if(dbService.EditProduct(p)){
+                    status.setText("Row Edited");
+                    status.setTextFill(Color.web("Blue"));
+                }else {
+                    status.setText("Couldn't Update");
+                    status.setTextFill(Color.web("Red"));
+                }
 
 
+            }catch (Exception e){
+                status.setText("Database Exception call your DbManager");
+                status.setTextFill(Color.web("Red"));
+            }
+
+
+
+        }
+        else {
+            status.setText("No Rows Selected");
+            status.setTextFill(Color.web("Blue"));
+        }
+
+
+
+        //update when done
+        productView.updateTableData();
+    }
+
+    private void DeleteButtonPress(){
+
+        int productID = Integer.parseInt(id.getText());
+        if (productID!=-1) {
+
+            //Delete From DB
+            try{
+
+                DBService dbService=new DBService();
+                if(dbService.deleteProduct(productID)){
+                    status.setText("Row Deleted");
+                    status.setTextFill(Color.web("Green"));
+                }else {
+                    status.setText("Child Record found");
+                    status.setTextFill(Color.web("Red"));
+                }
+
+
+            }catch (Exception e){
+                status.setText("Database Exception call your DbManager");
+                status.setTextFill(Color.web("Red"));
+            }
+
+
+
+        }
+        else {
+            status.setText("No Rows Selected");
+            status.setTextFill(Color.web("Blue"));
+        }
+
+
+
+        //update when done
+        productView.updateTableData();
 
     }
+
 
 }

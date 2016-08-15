@@ -1,20 +1,15 @@
 package root.Interface;
 
-import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import root.DataClass.Product;
 import root.DataClass.ProductInfo;
 import root.Database.DBService;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +20,6 @@ class InventoryView {
     private UpdateProductInfo UpdateProductInfo;
 
 
-    private Button removeButton;
-    private Button editButton;
     private Button refreshButton;
 
 
@@ -57,16 +50,9 @@ class InventoryView {
         leftContainer.setAlignment(Pos.CENTER);
         layout.setLeft(leftContainer);
 
-        editButton=new Button("Edit");
-        removeButton=new Button("Remove");
-        removeButton.setOnAction(event -> {
-           // DeleteButtonPress();
-        });
         refreshButton=new Button("Refresh");
-        refreshButton.setOnAction(event -> {
-            updateTableData();
-        });
-        leftContainer.getChildren().addAll(editButton,removeButton,refreshButton);
+        refreshButton.setOnAction(event -> updateTableData());
+        leftContainer.getChildren().addAll(refreshButton);
 
 
         //Right
@@ -129,6 +115,7 @@ class InventoryView {
             UpdateProductInfo.setPrice(p.getPrice());
             UpdateProductInfo.setPurchaseDate(p.getPurchaseDate());
             UpdateProductInfo.setProduct(p.getId());
+            UpdateProductInfo.setSelectedProduct(p);
 
         });
 
@@ -148,15 +135,20 @@ class InventoryView {
 
 
 
-    public static void updateTableData(){
+    static void updateTableData(){
         table.getItems().clear();
+        List<Product> products;
         DBService dbService=new DBService();
         List <ProductInfo>data;
         data=dbService.getInvetoryData();
+        products=dbService.getProducts();
+        //looks in effecient
         try {
             for (ProductInfo p : data) {
+                products.stream().filter(product -> product.getId() == p.getId()).forEach(product -> p.setName(product.getName()));
 
-                table.getItems().addAll(p);
+
+                table.getItems().add(p);
             }
 
             table.refresh();
@@ -166,20 +158,7 @@ class InventoryView {
     }
     public  void DeleteButtonPress(){
         //// TODO Delete item from DB 
-        ObservableList<ProductInfo> accountSelected , allAccounts;
-        accountSelected = table.getSelectionModel().getSelectedItems();
-        allAccounts = table.getItems();
 
-        if (!table.getSelectionModel().isEmpty()) {
-            accountSelected.forEach(allAccounts::remove);
-            status.setText("Row Deleted");
-            status.setTextFill(Color.web("Red"));
-            table.refresh();
-        }
-        else {
-            status.setText("No Rows Selected");
-            status.setTextFill(Color.web("Blue"));
-        }
 
 
     }
