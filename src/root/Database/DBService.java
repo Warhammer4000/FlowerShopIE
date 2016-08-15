@@ -46,16 +46,10 @@ public class DBService {
     }
 
     //Product
-    public boolean insertNewProduct(Product p){
+    public boolean insertNewProduct(Product p) throws SQLException {
         String query="INSERT  INTO PRODUCT VALUES ("+p.getId()+",'"+p.getName()+"',"+"'"+p.getType()+"','"+p.getVendor()+"')";
-        try{
-            System.out.print(query);
-            dbCon.selectQuery(query);
-        }
-        catch (Exception e){
-            System.out.println("Couldn't update Table");
-            return false;
-        }
+        System.out.print(query);
+        dbCon.selectQuery(query);
         return true;
     }
 

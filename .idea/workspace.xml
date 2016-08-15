@@ -4,10 +4,7 @@
     <list default="true" id="2c2b1c59-196f-4353-8562-ed0efc195e8f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Database/DBService.java" afterPath="$PROJECT_DIR$/src/root/Database/DBService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/InventoryView.java" afterPath="$PROJECT_DIR$/src/root/Interface/InventoryView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/UpdateProduct.java" afterPath="$PROJECT_DIR$/src/root/Interface/UpdateProduct.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/UpdateProductInfo.java" afterPath="$PROJECT_DIR$/src/root/Interface/UpdateProductInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/productView.java" afterPath="$PROJECT_DIR$/src/root/Interface/productView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Database/Dbcon.java" afterPath="$PROJECT_DIR$/src/root/Database/Dbcon.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -63,8 +60,8 @@
       <file leaf-file-name="DBService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/root/Database/DBService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -92,8 +89,8 @@
       <file leaf-file-name="Dbcon.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/root/Database/Dbcon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state relative-caret-position="239">
+              <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -112,8 +109,8 @@
       <file leaf-file-name="UpdateProduct.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/root/Interface/UpdateProduct.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="124" column="57" selection-start-line="124" selection-start-column="57" selection-end-line="124" selection-end-column="57" />
+            <state relative-caret-position="119">
+              <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
               <folding>
                 <element signature="e#789#790#0" expanded="true" />
                 <element signature="e#840#841#0" expanded="true" />
@@ -164,8 +161,9 @@
         <option value="$PROJECT_DIR$/src/root/Interface/InventoryView.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/productView.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/UpdateProductInfo.java" />
-        <option value="$PROJECT_DIR$/src/root/Database/DBService.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/UpdateProduct.java" />
+        <option value="$PROJECT_DIR$/src/root/Database/Dbcon.java" />
+        <option value="$PROJECT_DIR$/src/root/Database/DBService.java" />
       </list>
     </option>
   </component>
@@ -700,7 +698,7 @@
       <workItem from="1469368029260" duration="40000" />
       <workItem from="1471062381452" duration="317000" />
       <workItem from="1471181750945" duration="6148000" />
-      <workItem from="1471233960054" duration="15230000" />
+      <workItem from="1471233960054" duration="16041000" />
     </task>
     <task id="LOCAL-00001" summary="ReOrganized DashBoard">
       <created>1469108037775</created>
@@ -779,11 +777,18 @@
       <option name="project" value="LOCAL" />
       <updated>1471245729759</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="50%">
+      <created>1471249258766</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1471249258766</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44567000" />
+    <option name="totallyTimeSpent" value="45378000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -844,7 +849,8 @@
     <MESSAGE value="UI updated" />
     <MESSAGE value="25%" />
     <MESSAGE value="40%" />
-    <option name="LAST_COMMIT_MESSAGE" value="40%" />
+    <MESSAGE value="50%" />
+    <option name="LAST_COMMIT_MESSAGE" value="50%" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1250,11 +1256,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/Interface/InventoryView.java">
+    <entry file="file://$PROJECT_DIR$/src/root/Interface/productView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="106" column="42" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="42" />
+        <state relative-caret-position="645">
+          <caret line="135" column="48" selection-start-line="135" selection-start-column="48" selection-end-line="135" selection-end-column="48" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/root/Interface/UpdateProduct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding>
+            <element signature="e#789#790#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#952#953#0" expanded="true" />
+            <element signature="e#991#992#0" expanded="true" />
+            <element signature="e#1028#1029#0" expanded="true" />
+            <element signature="e#1071#1072#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1277,39 +1298,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/root/Database/Dbcon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="239">
+          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/Interface/productView.java">
+    <entry file="file://$PROJECT_DIR$/src/root/Interface/InventoryView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="135" column="48" selection-start-line="135" selection-start-column="48" selection-end-line="135" selection-end-column="48" />
+        <state relative-caret-position="1428">
+          <caret line="106" column="42" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="42" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/Interface/UpdateProduct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="124" column="57" selection-start-line="124" selection-start-column="57" selection-end-line="124" selection-end-column="57" />
-          <folding>
-            <element signature="e#789#790#0" expanded="true" />
-            <element signature="e#840#841#0" expanded="true" />
-            <element signature="e#952#953#0" expanded="true" />
-            <element signature="e#991#992#0" expanded="true" />
-            <element signature="e#1028#1029#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/root/Database/DBService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state relative-caret-position="136">
+          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
           <folding />
         </state>
       </provider>

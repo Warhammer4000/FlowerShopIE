@@ -40,12 +40,11 @@ class Dbcon {
         return stmt.executeUpdate(sql);
     }
 
-    ResultSet selectQuery(String sql){
+    ResultSet  selectQuery (String sql) throws SQLException{
         try{
             result = stmt.executeQuery(sql);
         }catch (Exception e){
-            System.out.print("Error");
-            e.printStackTrace();
+         System.out.println(e.getMessage());
         }
         return   result;
     }
