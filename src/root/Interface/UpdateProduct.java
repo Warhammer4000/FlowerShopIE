@@ -136,11 +136,21 @@ class UpdateProduct {
 
     private void EditButtonPress(){
         //update Database
+        int ID=-1;
+        String Name="";
+        String Type="";
+        String Vendor="";
+        try{
+            ID = Integer.parseInt(id.getText());
+            Name = this.name.getText();
+            Type = this.type.getText();
+            Vendor = this.vendor.getText();
+        }catch(Exception e){
+            status.setText("No Rows Selected");
+            status.setTextFill(Color.web("Blue"));
+        }
 
-        int ID=Integer.parseInt(id.getText());
-        String Name=this.name.getText();
-        String Type=this.type.getText();
-        String Vendor=this.vendor.getText();
+
         //create a product object
         Product p=new Product(ID,Name,Type,Vendor);
         if (ID>0) {
@@ -165,10 +175,6 @@ class UpdateProduct {
 
 
 
-        }
-        else {
-            status.setText("No Rows Selected");
-            status.setTextFill(Color.web("Blue"));
         }
 
 
