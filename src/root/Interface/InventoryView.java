@@ -17,7 +17,7 @@ class InventoryView {
     private BorderPane layout;
 
     private static TableView table;
-    private UpdateProductInfo UpdateProductInfo;
+    private UpdateInventory updateInventory;
 
 
 
@@ -55,13 +55,13 @@ class InventoryView {
         //Right
         VBox rightContainer=new VBox(10);
         rightContainer.setAlignment(Pos.CENTER);
-        UpdateProductInfo=new UpdateProductInfo();
-        rightContainer.getChildren().addAll(UpdateProductInfo.getLayout());
+        updateInventory =new UpdateInventory();
+        rightContainer.getChildren().addAll(updateInventory.getLayout());
         layout.setRight(rightContainer);
 
         //bottom
         //bot will show A status Update after each exection Performed
-        status=new Label();
+        status=updateInventory.getStatus();
         layout.setBottom(status);
 
 
@@ -107,12 +107,12 @@ class InventoryView {
         table.setOnMouseClicked(event -> {
             ProductInfo p = (ProductInfo) table.getSelectionModel().getSelectedItem();
             if(p!=null){
-                UpdateProductInfo.setQuantity(p.getQuantity());
-                UpdateProductInfo.setInventoryNo(p.getInventoryNo());
-                UpdateProductInfo.setPrice(p.getPrice());
-                UpdateProductInfo.setPurchaseDate(p.getPurchaseDate());
-                UpdateProductInfo.setProduct(p.getId());
-                UpdateProductInfo.setSelectedProduct(p);
+                updateInventory.setQuantity(p.getQuantity());
+                updateInventory.setInventoryNo(p.getInventoryNo());
+                updateInventory.setPrice(p.getPrice());
+                updateInventory.setPurchaseDate(p.getPurchaseDate());
+                updateInventory.setProduct(p.getId());
+                updateInventory.setSelectedProduct(p);
             }
 
 

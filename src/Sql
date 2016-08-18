@@ -1,44 +1,37 @@
-//Table
+CREATE TABLE  "User"
+   (	"ID" NUMBER NOT NULL ENABLE,
+	"NAME" VARCHAR2(20) NOT NULL ENABLE,
+	"PASSWORD" VARCHAR2(20) NOT NULL ENABLE,
+	 PRIMARY KEY ("ID") ENABLE
+   )
 
-CREATE TABLE SCOTT."User"
-(
-    ID INT,
-    Name VARCHAR(20),
-    Password VARCHAR(20)
-);
+CREATE TABLE  "PRODUCT"
+   (	"ID" NUMBER NOT NULL ENABLE,
+	"NAME" VARCHAR2(20) NOT NULL ENABLE,
+	"TYPE" VARCHAR2(20),
+	"VENDOR" VARCHAR2(20),
+	 CONSTRAINT "PRODUCT_PK" PRIMARY KEY ("ID") ENABLE
+   )
 
-CREATE TABLE Inventory1
-(
-  ID NUMBER PRIMARY KEY NOT NULL,
-  Name VARCHAR(40),
-  Quantity NUMBER,
-  PurchaseDate VARCHAR(20),
-  Price NUMBER,
-  Vendor VARCHAR(20)
-)
-
-CREATE TABLE Inventory2
-(
-  ID NUMBER PRIMARY KEY NOT NULL,
-  Name VARCHAR(40),
-  Quantity NUMBER,
-  PurchaseDate VARCHAR(20),
-  Price NUMBER,
-  Vendor VARCHAR(20)
-)
-
-CREATE TABLE Inventory3
-(
-  ID NUMBER PRIMARY KEY NOT NULL,
-  Name VARCHAR(40),
-  Quantity NUMBER,
-  PurchaseDate VARCHAR(20),
-  Price NUMBER,
-  Vendor VARCHAR(20)
-)
+CREATE TABLE  "INVENTORY"
+   (	"ID" NUMBER NOT NULL ENABLE,
+	"QUANTITY" NUMBER,
+	"PURCHASEDATE" VARCHAR2(100),
+	"PRICE" NUMBER,
+	"INVENTORYNO" NUMBER,
+	 CONSTRAINT "INVENTORY_FK" FOREIGN KEY ("ID")
+	  REFERENCES  "PRODUCT" ("ID") ENABLE
+   )
 
 
-//Update
-UPDATE SCOTT."User"
-SET Password='asbdhb'
-WHERE name='xyz';
+ //trigger
+
+   CREATE OR REPLACE TRIGGER  "PRICE_TRIGGER"
+   BEFORE
+   insert or update on "INVENTORY"
+   for each row
+    WHEN (new.Price < 0) begin
+   raise_application_error
+               (-20001
+                , 'Price Can not be Negative');
+   end;

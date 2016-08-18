@@ -1,7 +1,6 @@
 package root.Interface;
 
 
-import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 
 import javafx.scene.control.Label;
@@ -11,7 +10,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import root.DataClass.Product;
 import root.Database.DBService;
 
@@ -68,7 +66,7 @@ class productView {
 
         //bottom
         //bot will show A status Update after each exection Performed
-        status=new Label();
+        status=updateProduct.getStatus();
         layout.setBottom(status);
 
 
@@ -136,7 +134,7 @@ class productView {
         //get data fromDatabase
         table.getItems().clear();
         InventoryView.updateTableData();
-        UpdateProductInfo.UpdateProductPicker();
+        UpdateInventory.UpdateProductPicker();
         List<Product> data=new DBService().getProducts();
         try {
             for (Product p : data) {

@@ -14,13 +14,14 @@ import root.DataClass.Product;
 import root.DataClass.ProductInfo;
 import root.Database.DBService;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 
-class UpdateProductInfo {
+class UpdateInventory {
 
     private static AutoCompleteComboBox<Product> productPicker;
     private ProductInfo SelectedProduct;
@@ -50,7 +51,7 @@ class UpdateProductInfo {
 
 
 
-    UpdateProductInfo(){
+    UpdateInventory(){
 
         productLable=new Label("Product");
         productPicker=new AutoCompleteComboBox<>();
@@ -104,7 +105,6 @@ class UpdateProductInfo {
         layout.getChildren().addAll(priceLable,price);
         layout.getChildren().addAll(InventoryNoLable,InventoryNo);
         layout.getChildren().addAll(AddButton,EditButton,DeleteButton);
-        layout.getChildren().addAll(status);
     }
 
 
@@ -191,44 +191,19 @@ class UpdateProductInfo {
     }
 
     private void EditProductInfo(){
-        ProductInfo p;
-        int ID=productPicker.getValue().getId();
-        String Name=productPicker.getValue().getName();
-        int Quantity=Integer.parseInt(quantity.getText());
-        //date
-        LocalDate localDate = purchaseDate.getValue();
-        Date Date = java.sql.Date.valueOf(localDate);
+        ProductInfo p=getProductInfo();
 
-        double Price=Double.parseDouble(this.price.getText());
-
-        int InventoryNO=Integer.parseInt(this.InventoryNo.getText());
-
-
-
-        //create a product object
-        p=new ProductInfo(ID,Quantity,Date,Price,InventoryNO);
-
-        if (p.getId()>-1) {
-
-            //Delete From DB
-            try{
-                DBService dbService=new DBService();
-                if(dbService.EditProductInfo(p,SelectedProduct)){
-                    status.setText("Row Deleted");
-                    status.setTextFill(Color.web("Green"));
-                }else {
-                    status.setText("Child record Found");
-                    status.setTextFill(Color.web("Red"));
-                }
-
-
-            }catch (Exception e){
-                status.setText("Database Exception call your DbManager");
-                status.setTextFill(Color.web("Red"));
+        //Delete From DB
+        if (p.getId()>-1) try {
+            DBService dbService = new DBService();
+            if (dbService.EditProductInfo(p, SelectedProduct)) {
+                status.setText("Row Deleted");
+                status.setTextFill(Color.web("Green"));
             }
 
-
-
+        } catch (Exception e) {
+            status.setText(e.getLocalizedMessage());
+            status.setTextFill(Color.web("Red"));
         }
         else {
             status.setText("No Rows Selected");
@@ -243,22 +218,19 @@ class UpdateProductInfo {
 
 
     private void DeleteProductInfo(){
-        ProductInfo p;
-        int ID=productPicker.getValue().getId();
-        String Name=productPicker.getValue().getName();
-        int Quantity=Integer.parseInt(quantity.getText());
+        ProductInfo p=getProductInfo();
+
+
+
+
         //date
-        LocalDate localDate = purchaseDate.getValue();
-        Date Date = java.sql.Date.valueOf(localDate);
 
-        double Price=Double.parseDouble(this.price.getText());
 
-        int InventoryNO=Integer.parseInt(this.InventoryNo.getText());
 
 
 
         //create a product object
-        p=new ProductInfo(ID,Quantity,Date,Price,InventoryNO);
+
 
         if (p.getId()>-1) {
 
@@ -268,9 +240,6 @@ class UpdateProductInfo {
                 if(dbService.deleteProductInfo(p)){
                     status.setText("Row Deleted");
                     status.setTextFill(Color.web("Green"));
-                }else {
-                    status.setText("Child record Found");
-                    status.setTextFill(Color.web("Red"));
                 }
 
 
@@ -282,16 +251,35 @@ class UpdateProductInfo {
 
 
         }
-        else {
-            status.setText("No Rows Selected");
-            status.setTextFill(Color.web("Blue"));
-        }
-
-
-
         //update when done
         InventoryView.updateTableData();
     }
 
+    private ProductInfo getProductInfo(){
+        int ID=-1;
+        int Quantity=-1;
+        int InventoryNO=-1;
+        double Price=-1;
+        try{
+            ID = productPicker.getValue().getId();
+            Price = Double.parseDouble(this.price.getText());
+            InventoryNO = Integer.parseInt(this.InventoryNo.getText());
+            Quantity = Integer.parseInt(quantity.getText());
+        }catch (Exception e){
+            status.setText("No Rows Selected");
+            status.setTextFill(Color.web("Blue"));
+        }
 
+        LocalDate localDate = purchaseDate.getValue();
+        Date Date = java.sql.Date.valueOf(localDate);
+
+        return new ProductInfo(ID,Quantity,Date,Price,InventoryNO);
+
+
+
+    }
+
+    public Label getStatus() {
+        return status;
+    }
 }

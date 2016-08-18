@@ -66,7 +66,7 @@ class UpdateProduct {
 
         typeLable=new Label("Product Type");
         type=new TextField();
-        name.setMaxSize(200, 20);
+        type.setMaxSize(200, 20);
 
         VendorLable=new Label("Vendor Name");
         vendor=new TextField();
@@ -94,8 +94,6 @@ class UpdateProduct {
         layout.getChildren().addAll(VendorLable,vendor);
 
         layout.getChildren().addAll(AddButton,EditButton,DeleteButton);
-        layout.getChildren().addAll(status);
-
 
     }
 
@@ -180,42 +178,40 @@ class UpdateProduct {
     }
 
     private void DeleteButtonPress(){
+        int productID=-1;
+        try{
+          productID = Integer.parseInt(id.getText());
+        }catch (Exception e){
+            status.setText("No Rows Selected");
+            status.setTextFill(Color.web("Blue"));
+        }
 
-        int productID = Integer.parseInt(id.getText());
         if (productID!=-1) {
 
             //Delete From DB
             try{
 
                 DBService dbService=new DBService();
-                if(dbService.deleteProduct(productID)){
+                if(dbService.deleteProduct(productID)) {
                     status.setText("Row Deleted");
                     status.setTextFill(Color.web("Green"));
-                }else {
-                    status.setText("Child Record found");
-                    status.setTextFill(Color.web("Red"));
                 }
 
 
             }catch (Exception e){
-                status.setText("Database Exception call your DbManager");
+                status.setText(e.getLocalizedMessage());
                 status.setTextFill(Color.web("Red"));
             }
 
 
 
         }
-        else {
-            status.setText("No Rows Selected");
-            status.setTextFill(Color.web("Blue"));
-        }
-
-
 
         //update when done
         productView.updateTableData();
-
     }
 
-
+    public Label getStatus() {
+        return status;
+    }
 }

@@ -100,7 +100,7 @@ public class DBService {
         return productInfoList;
     }
 
-    public boolean deleteProduct(int id) {
+    public boolean deleteProduct(int id)throws Exception {
 
         String query="DELETE FROM PRODUCT WHERE ID="+id;
         System.out.println(query);
@@ -108,8 +108,7 @@ public class DBService {
             dbCon.inUpdateDelete(query);
         }
         catch (Exception e){
-            e.printStackTrace();
-            return false;
+            throw e;
         }
         return true;
 
@@ -150,7 +149,7 @@ public class DBService {
 
     }
 
-    public boolean EditProductInfo(ProductInfo p,ProductInfo SelectedProduct) {
+    public boolean EditProductInfo(ProductInfo p,ProductInfo SelectedProduct) throws SQLException {
 
         String query="UPDATE  INVENTORY SET " +
                 "ID="+p.getId()+"" +
@@ -167,9 +166,9 @@ public class DBService {
         try{
             dbCon.inUpdateDelete(query);
         }
-        catch (Exception e){
-            e.printStackTrace();
-            return false;
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+            throw e;
         }
         return true;
 
