@@ -7,6 +7,7 @@ import java.util.Date;
 public class ProductInfo
 {
     private Product product;
+    private int slNo;
     private int Id;
     private String name;
     private int Quantity;
@@ -15,12 +16,14 @@ public class ProductInfo
     private int inventoryNo;
 
 
-    public ProductInfo(int id, int quantity, Date purchaseDate, double price,int InventoryNo) {
+
+
+    public ProductInfo(int Slno, int id, int quantity, Date purchaseDate, double price, int InventoryNo) {
+        slNo=Slno;
         Id = id;
         Quantity = quantity;
         PurchaseDate = purchaseDate;
         Price = price;
-
         inventoryNo=InventoryNo;
     }
 
@@ -80,4 +83,11 @@ public class ProductInfo
         Price = price;
     }
 
+    public int getSlNo() {
+        return slNo;
+    }
+
+    public void setSlNo(int slNo) {
+        this.slNo = slNo;
+    }
 }

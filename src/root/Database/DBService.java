@@ -72,7 +72,7 @@ public class DBService {
 
     //productInfo
     public boolean insertNewProductInfo(ProductInfo p){
-        String query="INSERT  INTO Inventory VALUES ("+p.getId()+","+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+","+p.getInventoryNo()+")";
+        String query="INSERT  INTO Inventory VALUES (INVENTORY_SEQ_PK.nextval,"+p.getId()+","+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+","+p.getInventoryNo()+")";
         System.out.println(query);
         try{
             dbCon.selectQuery(query);
@@ -86,12 +86,13 @@ public class DBService {
 
     public List<ProductInfo> getInvetoryData(){
         List<ProductInfo> productInfoList =new ArrayList<>();
-        String query="SELECT ID,Quantity,PurchaseDate,Price,INVENTORYNO FROM Inventory";
+        String query="SELECT SL,ID,Quantity,PurchaseDate,Price,INVENTORYNO FROM Inventory";
         try {
             ResultSet rs = dbCon.selectQuery(query);
             while (rs.next()) {
                 //rs.bla bla create product
-                productInfoList.add(new ProductInfo(rs.getInt("ID"),rs.getInt("Quantity"),rs.getDate("PurchaseDate"),rs.getDouble("Price"),rs.getInt("InventoryNo")));
+                productInfoList.add(new ProductInfo(rs.getInt("SL"),rs.getInt("ID"),rs.getInt("Quantity"),rs.getDate("PurchaseDate"),rs.getDouble("Price"),rs.getInt("InventoryNo")));
+                System.out.println(rs.getInt("SL"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -131,11 +132,7 @@ public class DBService {
 
     public boolean deleteProductInfo(ProductInfo p) {
         String query="DELETE FROM INVENTORY " +
-                "WHERE ID="+p.getId()+" " +
-                "and Quantity="+p.getQuantity()+" " +
-                "and PURCHASEDATE='"+p.getPurchaseDate()+"" +
-                "' and PRICE="+p.getPrice()+"" +
-                " and INVENTORYNO="+p.getInventoryNo();
+                "WHERE SL="+p.getSlNo();
         System.out.println(query);
         try{
             dbCon.inUpdateDelete(query);

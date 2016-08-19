@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c2b1c59-196f-4353-8562-ed0efc195e8f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sql" afterPath="$PROJECT_DIR$/src/Sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/DataClass/ProductInfo.java" afterPath="$PROJECT_DIR$/src/root/DataClass/ProductInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Database/DBService.java" afterPath="$PROJECT_DIR$/src/root/Database/DBService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/InventoryView.java" afterPath="$PROJECT_DIR$/src/root/Interface/InventoryView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/UpdateProduct.java" afterPath="$PROJECT_DIR$/src/root/Interface/UpdateProduct.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/productView.java" afterPath="$PROJECT_DIR$/src/root/Interface/productView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/root/Interface/UpdateProductInfo.java" afterPath="$PROJECT_DIR$/src/root/Interface/UpdateInventory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/root/Interface/UpdateInventory.java" afterPath="$PROJECT_DIR$/src/root/Interface/UpdateInventory.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -56,7 +54,17 @@
         <entry file="file://$PROJECT_DIR$/src/root/Interface/InventoryView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="63" column="43" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
+              <caret line="113" column="51" selection-start-line="113" selection-start-column="51" selection-end-line="113" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductInfo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/root/DataClass/ProductInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -65,8 +73,8 @@
       <file leaf-file-name="Sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+            <state relative-caret-position="685">
+              <caret line="61" column="43" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -75,30 +83,8 @@
       <file leaf-file-name="DBService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/root/Database/DBService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="109" column="28" selection-start-line="109" selection-start-column="28" selection-end-line="109" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UpdateProduct.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/root/Interface/UpdateProduct.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="213" column="30" selection-start-line="213" selection-start-column="30" selection-end-line="213" selection-end-column="30" />
-              <folding>
-                <element signature="e#5343#5344#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="productView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/root/Interface/productView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-612">
-              <caret line="25" column="24" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="24" />
+            <state relative-caret-position="238">
+              <caret line="94" column="50" selection-start-line="94" selection-start-column="50" selection-end-line="94" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -107,27 +93,18 @@
       <file leaf-file-name="UpdateInventory.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/root/Interface/UpdateInventory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="106" column="71" selection-start-line="106" selection-start-column="71" selection-end-line="106" selection-end-column="71" />
+            <state relative-caret-position="336">
+              <caret line="262" column="29" selection-start-line="262" selection-start-column="29" selection-end-line="262" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2779#2780#0" expanded="true" />
+                <element signature="e#2806#2807#0" expanded="true" />
+                <element signature="e#2843#2844#0" expanded="true" />
+                <element signature="e#2875#2876#0" expanded="true" />
                 <element signature="method#setProduct#0;class#UpdateInventory#0" expanded="false" />
                 <element signature="method#setPurchaseDate#0;class#UpdateInventory#0" expanded="false" />
                 <element signature="method#UpdateProductPicker#0;class#UpdateInventory#0" expanded="false" />
-                <element signature="method#addProduct#0;class#UpdateInventory#0" expanded="false" />
-                <element signature="e#7332#7333#0" expanded="true" />
-                <element signature="e#7361#7362#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dbcon.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/root/Database/Dbcon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -165,15 +142,15 @@
         <option value="$PROJECT_DIR$/src/root/Interface/DashBoard.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/AddProductInfo.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/AddProduct.java" />
-        <option value="$PROJECT_DIR$/src/root/DataClass/ProductInfo.java" />
         <option value="$PROJECT_DIR$/src/root/Database/Dbcon.java" />
         <option value="$PROJECT_DIR$/src/root/CustomControl/NumericTextField.java" />
-        <option value="$PROJECT_DIR$/src/Sql" />
-        <option value="$PROJECT_DIR$/src/root/Database/DBService.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/UpdateProductInfo.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/UpdateProduct.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/productView.java" />
+        <option value="$PROJECT_DIR$/src/Sql" />
+        <option value="$PROJECT_DIR$/src/root/Database/DBService.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/InventoryView.java" />
+        <option value="$PROJECT_DIR$/src/root/DataClass/ProductInfo.java" />
         <option value="$PROJECT_DIR$/src/root/Interface/UpdateInventory.java" />
       </list>
     </option>
@@ -215,7 +192,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -360,8 +336,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -712,7 +689,8 @@
       <workItem from="1471233960054" duration="16071000" />
       <workItem from="1471265587028" duration="1027000" />
       <workItem from="1471269661996" duration="1172000" />
-      <workItem from="1471525243443" duration="3528000" />
+      <workItem from="1471525243443" duration="3584000" />
+      <workItem from="1471578382859" duration="2102000" />
     </task>
     <task id="LOCAL-00001" summary="ReOrganized DashBoard">
       <created>1469108037775</created>
@@ -812,11 +790,18 @@
       <option name="project" value="LOCAL" />
       <updated>1471270496718</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="70">
+      <created>1471529870107</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1471529870107</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51135000" />
+    <option name="totallyTimeSpent" value="53293000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -840,7 +825,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32569557" sideWeight="0.49088147" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20592706" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20896657" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902735" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -878,7 +863,8 @@
     <MESSAGE value="25%" />
     <MESSAGE value="40%" />
     <MESSAGE value="50%" />
-    <option name="LAST_COMMIT_MESSAGE" value="50%" />
+    <MESSAGE value="70" />
+    <option name="LAST_COMMIT_MESSAGE" value="70" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -935,12 +921,13 @@
           <caret line="132" column="28" selection-start-line="132" selection-start-column="28" selection-end-line="132" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2779#2780#0" expanded="true" />
+            <element signature="e#2806#2807#0" expanded="true" />
+            <element signature="e#2843#2844#0" expanded="true" />
+            <element signature="e#2875#2876#0" expanded="true" />
             <element signature="method#setProduct#0;class#UpdateInventory#0" expanded="false" />
             <element signature="method#setPurchaseDate#0;class#UpdateInventory#0" expanded="false" />
             <element signature="method#UpdateProductPicker#0;class#UpdateInventory#0" expanded="false" />
-            <element signature="method#addProduct#0;class#UpdateInventory#0" expanded="false" />
-            <element signature="e#7332#7333#0" expanded="true" />
-            <element signature="e#7361#7362#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -949,9 +936,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#564#565#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,12 +1008,13 @@
           <caret line="132" column="28" selection-start-line="132" selection-start-column="28" selection-end-line="132" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2779#2780#0" expanded="true" />
+            <element signature="e#2806#2807#0" expanded="true" />
+            <element signature="e#2843#2844#0" expanded="true" />
+            <element signature="e#2875#2876#0" expanded="true" />
             <element signature="method#setProduct#0;class#UpdateInventory#0" expanded="false" />
             <element signature="method#setPurchaseDate#0;class#UpdateInventory#0" expanded="false" />
             <element signature="method#UpdateProductPicker#0;class#UpdateInventory#0" expanded="false" />
-            <element signature="method#addProduct#0;class#UpdateInventory#0" expanded="false" />
-            <element signature="e#7332#7333#0" expanded="true" />
-            <element signature="e#7361#7362#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1037,9 +1023,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#564#565#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,12 +1071,13 @@
           <caret line="134" column="28" selection-start-line="134" selection-start-column="28" selection-end-line="134" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2779#2780#0" expanded="true" />
+            <element signature="e#2806#2807#0" expanded="true" />
+            <element signature="e#2843#2844#0" expanded="true" />
+            <element signature="e#2875#2876#0" expanded="true" />
             <element signature="method#setProduct#0;class#UpdateInventory#0" expanded="false" />
             <element signature="method#setPurchaseDate#0;class#UpdateInventory#0" expanded="false" />
             <element signature="method#UpdateProductPicker#0;class#UpdateInventory#0" expanded="false" />
-            <element signature="method#addProduct#0;class#UpdateInventory#0" expanded="false" />
-            <element signature="e#7332#7333#0" expanded="true" />
-            <element signature="e#7361#7362#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1101,9 +1086,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="25" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="25" />
-          <folding>
-            <element signature="e#564#565#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1136,12 +1119,13 @@
           <caret line="134" column="28" selection-start-line="134" selection-start-column="28" selection-end-line="134" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2779#2780#0" expanded="true" />
+            <element signature="e#2806#2807#0" expanded="true" />
+            <element signature="e#2843#2844#0" expanded="true" />
+            <element signature="e#2875#2876#0" expanded="true" />
             <element signature="method#setProduct#0;class#UpdateInventory#0" expanded="false" />
             <element signature="method#setPurchaseDate#0;class#UpdateInventory#0" expanded="false" />
             <element signature="method#UpdateProductPicker#0;class#UpdateInventory#0" expanded="false" />
-            <element signature="method#addProduct#0;class#UpdateInventory#0" expanded="false" />
-            <element signature="e#7332#7333#0" expanded="true" />
-            <element signature="e#7361#7362#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1150,9 +1134,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="25" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="25" />
-          <folding>
-            <element signature="e#564#565#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1175,9 +1157,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="25" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="25" />
-          <folding>
-            <element signature="e#564#565#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1218,17 +1198,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/DataClass/ProductInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-          <folding>
-            <element signature="e#564#565#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1240,6 +1209,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/root/Database/Dbcon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <element signature="e#867#868#0" expanded="false" />
+            <element signature="e#905#906#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/root/Interface/DashBoard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1248,41 +1228,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/Database/Dbcon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/root/Database/DBService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="109" column="28" selection-start-line="109" selection-start-column="28" selection-end-line="109" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/root/Interface/productView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-612">
+        <state relative-caret-position="-985">
           <caret line="25" column="24" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="685">
+          <caret line="61" column="43" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/root/Interface/UpdateProduct.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
+        <state relative-caret-position="1871">
           <caret line="213" column="30" selection-start-line="213" selection-start-column="30" selection-end-line="213" selection-end-column="30" />
           <folding>
             <element signature="e#5343#5344#0" expanded="true" />
@@ -1290,26 +1254,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/root/Database/DBService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="94" column="50" selection-start-line="94" selection-start-column="50" selection-end-line="94" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/root/Interface/InventoryView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="63" column="43" selection-start-line="63" selection-start-column="43" selection-end-line="63" selection-end-column="43" />
+          <caret line="113" column="51" selection-start-line="113" selection-start-column="51" selection-end-line="113" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/root/DataClass/ProductInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/root/Interface/UpdateInventory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="106" column="71" selection-start-line="106" selection-start-column="71" selection-end-line="106" selection-end-column="71" />
+        <state relative-caret-position="336">
+          <caret line="262" column="29" selection-start-line="262" selection-start-column="29" selection-end-line="262" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2779#2780#0" expanded="true" />
+            <element signature="e#2806#2807#0" expanded="true" />
+            <element signature="e#2843#2844#0" expanded="true" />
+            <element signature="e#2875#2876#0" expanded="true" />
             <element signature="method#setProduct#0;class#UpdateInventory#0" expanded="false" />
             <element signature="method#setPurchaseDate#0;class#UpdateInventory#0" expanded="false" />
             <element signature="method#UpdateProductPicker#0;class#UpdateInventory#0" expanded="false" />
-            <element signature="method#addProduct#0;class#UpdateInventory#0" expanded="false" />
-            <element signature="e#7332#7333#0" expanded="true" />
-            <element signature="e#7361#7362#0" expanded="true" />
           </folding>
         </state>
       </provider>

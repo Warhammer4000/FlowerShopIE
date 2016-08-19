@@ -14,24 +14,49 @@ CREATE TABLE  "PRODUCT"
    )
 
 CREATE TABLE  "INVENTORY"
-   (	"ID" NUMBER NOT NULL ENABLE,
-	"QUANTITY" NUMBER,
-	"PURCHASEDATE" VARCHAR2(100),
-	"PRICE" NUMBER,
-	"INVENTORYNO" NUMBER,
+   (	"SL" NUMBER NOT NULL ENABLE,
+	"ID" NUMBER NOT NULL ENABLE,
+	"QUANTITY" NUMBER NOT NULL ENABLE,
+	"PURCHASEDATE" VARCHAR2(100) NOT NULL ENABLE,
+	"PRICE" NUMBER NOT NULL ENABLE,
+	"INVENTORYNO" NUMBER NOT NULL ENABLE,
+	 CONSTRAINT "INVENTORY_PK" PRIMARY KEY ("SL") ENABLE,
 	 CONSTRAINT "INVENTORY_FK" FOREIGN KEY ("ID")
 	  REFERENCES  "PRODUCT" ("ID") ENABLE
    )
 
-
  //trigger
+
+   CREATE OR REPLACE TRIGGER  "BI_INVENTORY"
+     before insert on "INVENTORY"
+     for each row
+   begin
+       select "INVENTORY_SEQ_PK".nextval into :NEW.SL from dual;
+   end;
+
+   /
+   ALTER TRIGGER  "BI_INVENTORY" ENABLE
+   /
 
    CREATE OR REPLACE TRIGGER  "PRICE_TRIGGER"
    BEFORE
    insert or update on "INVENTORY"
    for each row
-    WHEN (new.Price < 0) begin
+     WHEN (new.Price < 0) begin
    raise_application_error
                (-20001
                 , 'Price Can not be Negative');
    end;
+   /
+   ALTER TRIGGER  "PRICE_TRIGGER" ENABLE
+   /
+
+   CREATE OR REPLACE TRIGGER  "QUANTITY_TRIGGER"
+   BEFORE
+   insert or update on "INVENTORY"
+   for each row
+     WHEN (new.Quantity< 0) begin
+   raise_application_error (-20001 , 'Quantity Can not be Negative');
+   end;
+   /
+   ALTER TRIGGER  "QUANTITY_TRIGGER" ENABLE

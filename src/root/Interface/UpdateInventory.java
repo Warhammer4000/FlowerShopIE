@@ -14,7 +14,7 @@ import root.DataClass.Product;
 import root.DataClass.ProductInfo;
 import root.Database.DBService;
 
-import java.sql.SQLException;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
@@ -48,6 +48,7 @@ class UpdateInventory {
     private  Label status;
 
     private VBox layout;
+    private int slNo;
 
 
 
@@ -108,6 +109,13 @@ class UpdateInventory {
     }
 
 
+    public int getSlNo() {
+        return slNo;
+    }
+
+    public void setSlNo(int slNo) {
+        this.slNo = slNo;
+    }
     void setProduct(int id){
         ObservableList<Product> observableList=productPicker.getItems();
         Product product=null;
@@ -156,22 +164,7 @@ class UpdateInventory {
     private void addProduct(){
         //validate Values
         try {
-            ProductInfo p;
-            int ID=productPicker.getValue().getId();
-            String Name=productPicker.getValue().getName();
-            int Quantity=Integer.parseInt(quantity.getText());
-            //date
-            LocalDate localDate = purchaseDate.getValue();
-            Date Date = java.sql.Date.valueOf(localDate);
-
-            double Price=Double.parseDouble(this.price.getText());
-
-            int InventoryNO=Integer.parseInt(this.InventoryNo.getText());
-
-
-
-            //create a product object
-            p=new ProductInfo(ID,Quantity,Date,Price,InventoryNO);
+            ProductInfo p=getProductInfo();
 
             DBService dbService=new DBService();
             dbService.insertNewProductInfo(p);
@@ -260,7 +253,9 @@ class UpdateInventory {
         int Quantity=-1;
         int InventoryNO=-1;
         double Price=-1;
+        int SL=-1;
         try{
+            SL=getSlNo();
             ID = productPicker.getValue().getId();
             Price = Double.parseDouble(this.price.getText());
             InventoryNO = Integer.parseInt(this.InventoryNo.getText());
@@ -273,7 +268,7 @@ class UpdateInventory {
         LocalDate localDate = purchaseDate.getValue();
         Date Date = java.sql.Date.valueOf(localDate);
 
-        return new ProductInfo(ID,Quantity,Date,Price,InventoryNO);
+        return new ProductInfo(SL,ID,Quantity,Date,Price,InventoryNO);
 
 
 

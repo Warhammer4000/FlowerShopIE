@@ -75,6 +75,10 @@ class InventoryView {
     private void setTable() {
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
+        TableColumn<ProductInfo, Integer> SLColumn = new TableColumn<>("SL#");
+        SLColumn.setCellValueFactory(new PropertyValueFactory<>("slNo"));
+        SLColumn.setStyle("-fx-alignment:CENTER;");
+
         //name
         TableColumn<ProductInfo, String> nameColumn = new TableColumn<>("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
@@ -107,6 +111,7 @@ class InventoryView {
         table.setOnMouseClicked(event -> {
             ProductInfo p = (ProductInfo) table.getSelectionModel().getSelectedItem();
             if(p!=null){
+                updateInventory.setSlNo(p.getSlNo());
                 updateInventory.setQuantity(p.getQuantity());
                 updateInventory.setInventoryNo(p.getInventoryNo());
                 updateInventory.setPrice(p.getPrice());
@@ -119,7 +124,7 @@ class InventoryView {
         });
 
         //addColumns on table
-
+        table.getColumns().add(SLColumn);
         table.getColumns().add(nameColumn);
         table.getColumns().add(priceColumn);
         table.getColumns().add(quantityColumn);
