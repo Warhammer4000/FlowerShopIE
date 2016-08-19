@@ -24,7 +24,7 @@ import java.util.List;
 class UpdateInventory {
 
     private static AutoCompleteComboBox<Product> productPicker;
-    private ProductInfo SelectedProduct;
+
 
     private Label productLable;
 
@@ -138,9 +138,7 @@ class UpdateInventory {
         this.purchaseDate.setValue(localDate);
     }
 
-    void setSelectedProduct(ProductInfo selectedProduct) {
-        this.SelectedProduct = selectedProduct;
-    }
+
 
     void setPrice(Double price) {
         this.price.setText(String.valueOf(price));
@@ -189,7 +187,7 @@ class UpdateInventory {
         //Delete From DB
         if (p.getId()>-1) try {
             DBService dbService = new DBService();
-            if (dbService.EditProductInfo(p, SelectedProduct)) {
+            if (dbService.EditProductInfo(p)) {
                 status.setText("Row Deleted");
                 status.setTextFill(Color.web("Green"));
             }

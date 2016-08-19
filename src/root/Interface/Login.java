@@ -67,14 +67,11 @@ public class Login {
     }
 
     private boolean LoginRequest(String name, String password){
-        user= new DBService().getUser(name,password);
         //check database if found return true
-        if(user!=null){
+        if(new DBService().getUser(name,password)){
             return  true;
         }
-
         else{
-            System.out.print("Null");
             statusUpdate("User Name/Password Mismatch");
             return false;
         }

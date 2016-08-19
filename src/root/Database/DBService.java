@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BooleanSupplier;
 
 
 public class DBService {
@@ -22,18 +23,20 @@ public class DBService {
 
     //user
 
-    public User getUser(String username, String password) {
-        String query="SELECT ID,Name,Password FROM SCOTT.\"User\" WHERE name='"+username+"' and Password='"+password+"'";
-        User user = null;
-        try {
-            ResultSet rs = dbCon.selectQuery(query);
-            while (rs.next()) {
-                user=new User(rs.getInt("ID"), rs.getString("NAME"), rs.getString("Password"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public Boolean getUser(String username, String password) {
+        String query="Begin \n" +
+                "ValidateUser('"+username+"','"+password+"');\n" +
+                " End;";
+        try{
+            System.out.println(query);
+            dbCon.inUpdateDelete(query);
         }
-        return user;
+        catch (SQLException e){
+            return false;
+        }
+
+        return true;
+
     }
 
     public boolean updatePassword(String name,String password){
@@ -145,7 +148,7 @@ public class DBService {
 
     }
 
-    public boolean EditProductInfo(ProductInfo p,ProductInfo SelectedProduct) throws SQLException {
+    public boolean EditProductInfo(ProductInfo p) throws SQLException {
 
         String query="UPDATE  INVENTORY SET " +
                 "ID="+p.getId()+"" +
@@ -153,11 +156,7 @@ public class DBService {
                 ",PURCHASEDATE='"+p.getPurchaseDate()+"" +
                 "',Price="+p.getPrice()+"" +
                 ",INVENTORYNO="+p.getInventoryNo()+
-                " WHERE ID="+SelectedProduct.getId()+" " +
-                "and Quantity="+SelectedProduct.getQuantity()+" " +
-                "and PURCHASEDATE='"+SelectedProduct.getPurchaseDate()+"' " +
-                "and PRICE="+SelectedProduct.getPrice()+" " +
-                "and INVENTORYNO="+SelectedProduct.getInventoryNo();
+                " WHERE SL="+p.getSlNo()+"";
         System.out.println(query);
         try{
             dbCon.inUpdateDelete(query);

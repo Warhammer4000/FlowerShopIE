@@ -26,18 +26,6 @@ CREATE TABLE  "INVENTORY"
    )
 
  //trigger
-
-   CREATE OR REPLACE TRIGGER  "BI_INVENTORY"
-     before insert on "INVENTORY"
-     for each row
-   begin
-       select "INVENTORY_SEQ_PK".nextval into :NEW.SL from dual;
-   end;
-
-   /
-   ALTER TRIGGER  "BI_INVENTORY" ENABLE
-   /
-
    CREATE OR REPLACE TRIGGER  "PRICE_TRIGGER"
    BEFORE
    insert or update on "INVENTORY"
@@ -61,7 +49,7 @@ CREATE TABLE  "INVENTORY"
    /
    ALTER TRIGGER  "QUANTITY_TRIGGER" ENABLE
 
-
+   //Sequence
    CREATE SEQUENCE   "INVENTORY_SEQ_PK"
    MINVALUE 1
    MAXVALUE 999999999999999999999999999
@@ -70,3 +58,28 @@ CREATE TABLE  "INVENTORY"
    NOCACHE
    NOORDER
    NOCYCLE
+
+
+
+   /function
+
+   CREATE OR REPLACE FUNCTION ValidUser(userName varchar,userPassword varchar) RETURN BOOLEAN AS
+   total number(2):=0;
+   BEGIN
+   select count(*) into total from Scott."User" where Name=userName AND Password=userPassword ;
+
+   if total > 0 then return TRUE;
+   else return FALSE;
+   END IF;
+   END;
+
+
+   /Procedure
+   CREATE OR REPLACE PROCEDURE ValidateUser(userName varchar,userPassword varchar) as
+   Begin
+   if validUser(userName,userPassword) then
+     dbms_output.put_line('User Found');
+   Else
+     raise_application_error(-20002,'User Not found');
+   End if;
+   END;

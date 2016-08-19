@@ -117,7 +117,6 @@ class InventoryView {
                 updateInventory.setPrice(p.getPrice());
                 updateInventory.setPurchaseDate(p.getPurchaseDate());
                 updateInventory.setProduct(p.getId());
-                updateInventory.setSelectedProduct(p);
             }
 
 
