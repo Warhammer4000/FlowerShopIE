@@ -92,7 +92,6 @@ public class DBService {
             while (rs.next()) {
                 //rs.bla bla create product
                 productInfoList.add(new ProductInfo(rs.getInt("SL"),rs.getInt("ID"),rs.getInt("Quantity"),rs.getDate("PurchaseDate"),rs.getDouble("Price"),rs.getInt("InventoryNo")));
-                System.out.println(rs.getInt("SL"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
