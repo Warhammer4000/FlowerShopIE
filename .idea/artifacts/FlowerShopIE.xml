@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="FlowerShopIE">
+    <output-path>$PROJECT_DIR$/out/artifacts</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="root.App.Main" />
+        <option name="description" value="&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#13;&#10;" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="FlowerShopIE" />
+        <option name="vendor" value="2TakarDeveloper" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="FlowerShopIE.jar">
+        <element id="module-output" name="FlowerShopIE" />
+      </element>
+    </root>
+  </artifact>
+</component>

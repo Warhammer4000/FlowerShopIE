@@ -75,7 +75,8 @@ public class DBService {
 
     //productInfo
     public boolean insertNewProductInfo(ProductInfo p){
-        String query="INSERT  INTO Inventory VALUES (INVENTORY_SEQ_PK.NEXTVAL,"+p.getId()+","+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+","+p.getInventoryNo()+")";
+        String query="INSERT  INTO Inventory (id,quantity,purchasedate,price,inventoryno)" +
+                "VALUES ("+p.getId()+","+p.getQuantity()+",'"+p.getPurchaseDate()+"',"+p.getPrice()+","+p.getInventoryNo()+")";
         System.out.println(query);
         try{
             dbCon.selectQuery(query);

@@ -13,14 +13,14 @@ CREATE TABLE  "PRODUCT"
 	 CONSTRAINT "PRODUCT_PK" PRIMARY KEY ("ID") ENABLE
    )
 
-CREATE TABLE  "INVENTORY"
-   (	"SL" NUMBER NOT NULL ENABLE,
-	"ID" NUMBER NOT NULL ENABLE,
-	"QUANTITY" NUMBER NOT NULL ENABLE,
-	"PURCHASEDATE" VARCHAR2(100) NOT NULL ENABLE,
-	"PRICE" NUMBER NOT NULL ENABLE,
-	"INVENTORYNO" NUMBER NOT NULL ENABLE,
-	 CONSTRAINT "INVENTORY_PK" PRIMARY KEY ("SL") ENABLE,
+CREATE TABLE  "INVENTORY" 
+   (	"SL" NUMBER NOT NULL ENABLE, 
+	"ID" NUMBER NOT NULL ENABLE, 
+	"QUANTITY" NUMBER NOT NULL ENABLE, 
+	"PURCHASEDATE" VARCHAR2(100) NOT NULL ENABLE, 
+	"PRICE" NUMBER NOT NULL ENABLE, 
+	"INVENTORYNO" NUMBER NOT NULL ENABLE, 
+	 CONSTRAINT "INVENTORY_PK" PRIMARY KEY ("SL") ENABLE, 
 	 CONSTRAINT "INVENTORY_FK" FOREIGN KEY ("ID")
 	  REFERENCES  "PRODUCT" ("ID") ENABLE
    )
@@ -59,7 +59,13 @@ CREATE TABLE  "INVENTORY"
    NOORDER
    NOCYCLE
 
-
+   //Trigger to handle sequence
+   CREATE OR REPLACE TRIGGER  "BI_INVENTORY"
+     before insert on "INVENTORY"
+     for each row
+   begin
+       select "INVENTORY_SEQ_PK".nextval into :NEW.SL from dual;
+   end;
 
    /function
 
@@ -83,3 +89,38 @@ CREATE TABLE  "INVENTORY"
      raise_application_error(-20002,'User Not found');
    End if;
    END;
+
+
+  //Procedure to Reset sequence // From ask tom
+
+  create or replace
+  procedure reset_seq( p_seq_name in varchar2 )
+  is
+      l_val number;
+  begin
+      execute immediate
+      'select ' || p_seq_name || '.nextval from dual' INTO l_val;
+
+      execute immediate
+      'alter sequence ' || p_seq_name || ' increment by -' || l_val ||
+                                                            ' minvalue 0';
+
+      execute immediate
+      'select ' || p_seq_name || '.nextval from dual' INTO l_val;
+
+      execute immediate
+      'alter sequence ' || p_seq_name || ' increment by 1 minvalue 0';
+  end;
+
+  //To call resetSequnce
+  Begin
+  reset_seq('INVENTORY_SEQ_PK');
+  end;
+
+
+
+
+
+
+
+
